@@ -38,7 +38,7 @@ const pricingPlans = [
       "データバックアップ",
       "技術サポート"
     ],
-    isPopular: true,
+    isPopular: false,
     color: "from-blue-600 to-blue-700"
   },
   {
@@ -54,6 +54,7 @@ const pricingPlans = [
       "初期設定最適化"
     ],
     isOptional: true,
+    isPopular: true,
     color: "from-green-600 to-green-700"
   }
 ]
