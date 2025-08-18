@@ -5,10 +5,10 @@ export default function FormPage() {
     <>
       <Header />
       <main className="container mx-auto px-4 py-24">
-        <h1 className="text-4xl font-bold text-center mb-8">お問い合わせフォーム</h1>
+        <h1 className="text-4xl font-bold text-center mb-8">申し込みフォーム</h1>
         <div className="aspect-w-16 aspect-h-9">
           <iframe
-            src="https://docs.google.com/forms/d/1XTklvZBAxtJlvJXQfoLFhPRHtMzTwNo9gjp3OiW8W5U/edit?embedded=true"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeK6IjTYXoYdUfRbpAmDxg-rgJxCEbpLySTAnsTqXXH_At5TA/viewform?usp=sharing&ouid=106111889620545617242"
             width="100%"
             height="100%"
             frameBorder="0"
