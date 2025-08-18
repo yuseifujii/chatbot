@@ -68,8 +68,6 @@ ${storeData.faq.map((item, index) => `
 2. 親切で温かみのある対応を心がけてください
 3. 不明な点は「詳細はお電話（${storeData.businessInfo.phone}）またはメール（${storeData.businessInfo.email}）でお問い合わせください」と案内してください
 4. ${storeData.customSettings.welcomeMessage}のトーンを維持してください
-
-お客様からの質問: "${message}"
 `
 
       const completion = await openai.chat.completions.create({
