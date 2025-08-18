@@ -56,9 +56,9 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">お問い合わせ</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li>📞 03-1234-5678</li>
-                <li>✉️ info@chatbot-pro.jp</li>
-                <li>🏢 東京都千代田区〇〇</li>
+                <li>合同会社ToreMock</li>
+                <li>✉️ info@toremock.com</li>
+                <li>🏢 千葉県船橋市薬園台六丁目八番二号</li>
                 <li>⏰ 平日 9:00-18:00</li>
               </ul>
             </div>

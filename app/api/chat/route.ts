@@ -64,8 +64,7 @@ ${storeData.faq.map((item, index) => `
 1. 上記の情報を基に正確に回答してください
 2. 親切で温かみのある対応を心がけてください
 3. 不明な点は「詳細はお電話（${storeData.businessInfo.phone}）またはメール（${storeData.businessInfo.email}）でお問い合わせください」と案内してください
-4. 営業時間外の問い合わせの場合は、営業時間をお知らせして、営業時間内の連絡を促してください
-5. ${storeData.customSettings.welcomeMessage}のトーンを維持してください
+4. ${storeData.customSettings.welcomeMessage}のトーンを維持してください
 
 お客様からの質問: "${message}"
 `
@@ -75,9 +74,9 @@ ${storeData.faq.map((item, index) => `
           { role: 'system', content: systemPrompt },
           { role: 'user', content: message }
         ],
-        model: 'gpt-3.5-turbo',
-        temperature: 0.7,
-        max_tokens: 500,
+        model: 'gpt-5-mini',
+        temperature: 1.0,
+        max_tokens: 300,
       })
 
       return NextResponse.json({
