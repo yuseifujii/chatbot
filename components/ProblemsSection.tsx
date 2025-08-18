@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { Clock, UserX, ClipboardList, AlertCircle } from 'lucide-react'
-import { useChatbot } from '@/contexts/ChatbotContext';
 
 const problems = [
   {
@@ -26,8 +25,6 @@ const problems = [
 ]
 
 export default function ProblemsSection() {
-  const { openChatbot } = useChatbot();
-
   return (
     <section id="problems" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -89,7 +86,7 @@ export default function ProblemsSection() {
             AIチャットボットなら24時間365日、即座に正確な対応が可能です
           </p>
           <button
-            onClick={openChatbot}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
             className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
           >
             解決策を見る →

@@ -9,6 +9,7 @@ const navItems = [
   { label: 'ホーム', href: '#hero' },
   { label: 'サービス', href: '#services' },
   { label: '料金', href: '#pricing' },
+  { label: 'お問い合わせ', href: '#contact' },
 ]
 
 export default function Header() {

@@ -3,11 +3,8 @@
 import { motion } from 'framer-motion'
 import { MessageSquare, Clock, Users } from 'lucide-react'
 import Link from 'next/link'
-import { useChatbot } from '@/contexts/ChatbotContext'
 
 export default function HeroSection() {
-  const { openChatbot } = useChatbot();
-
   return (
     <section id="hero" className="pt-24 pb-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -36,7 +33,7 @@ export default function HeroSection() {
                 </button>
               </Link>
               <button
-                onClick={openChatbot}
+                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
                 className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300"
               >
                 デモを体験

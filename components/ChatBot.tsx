@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react'
-import { useChatbot } from '@/contexts/ChatbotContext'
 
 interface Message {
   id: string
@@ -13,7 +12,7 @@ interface Message {
 }
 
 export default function ChatBot() {
-  const { isOpen, openChatbot, closeChatbot } = useChatbot();
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -33,6 +32,14 @@ export default function ChatBot() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  useEffect(() => {
+    const handleOpenChat = () => setIsOpen(true);
+    window.addEventListener('open-chatbot', handleOpenChat);
+    return () => {
+      window.removeEventListener('open-chatbot', handleOpenChat);
+    };
+  }, []);
 
   const handleSend = async () => {
     if (!inputText.trim()) return
@@ -109,7 +116,7 @@ export default function ChatBot() {
             exit={{ scale: 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={openChatbot}
+            onClick={() => setIsOpen(true)}
             className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
           >
             <MessageCircle size={28} />
@@ -141,7 +148,7 @@ export default function ChatBot() {
                 </div>
               </div>
               <button
-                onClick={closeChatbot}
+                onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-white/20 rounded-lg transition-colors"
               >
                 <X size={20} />

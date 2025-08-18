@@ -54,6 +54,7 @@ const pricingPlans = [
       "初期設定最適化"
     ],
     isOptional: true,
+    isPopular: true,
     color: "from-green-600 to-green-700"
   }
 ]
