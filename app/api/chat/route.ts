@@ -79,7 +79,7 @@ ${storeData.faq.map((item, index) => `
         ],
         model: 'gpt-5-nano-2025-08-07',
         temperature: 1.0,
-        max_tokens: 2000, // パラメータ名を max_completion_tokens から max_tokens に修正
+        max_completion_tokens: 2000,
       })
 
       // OpenAIからの応答全体を詳細にログ出力
