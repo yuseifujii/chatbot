@@ -82,13 +82,14 @@ ${storeData.faq.map((item, index) => `
         max_completion_tokens: 300,
       })
 
-      console.log('OpenAI response received:', {
-        content: completion.choices[0].message.content,
-        usage: completion.usage
-      })
+      // OpenAIからの応答全体を詳細にログ出力
+      const firstChoice = completion.choices[0];
+      console.log('OpenAI completion choice:', JSON.stringify(firstChoice, null, 2));
+
+      const responseContent = firstChoice?.message?.content;
 
       return NextResponse.json({
-        response: completion.choices[0].message.content,
+        response: responseContent || '', // nullの場合も空文字を返す
         storeId: storeId
       })
     } else {
