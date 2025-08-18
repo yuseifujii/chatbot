@@ -69,7 +69,7 @@ export default function ChatBot() {
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || data.error || 'お問い合わせありがとうございます。ただいま回答を準備しております。',
+        text: data.response || data.error || '回答できませんでした。',
         sender: 'bot',
         timestamp: new Date()
       }

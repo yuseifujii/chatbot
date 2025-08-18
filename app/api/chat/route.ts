@@ -64,7 +64,7 @@ ${storeData.faq.map((item, index) => `
 `).join('\n')}
 
 【対応ガイドライン】
-1. 上記の情報を基に、顧客のお問い合わせに対して約100文字以内で正確に回答してください
+1. 上記の情報を基に、顧客のお問い合わせに対して約300文字以内で正確に回答してください
 2. 親切で温かみのある対応を心がけてください
 3. 不明な点は「詳細はお電話（${storeData.businessInfo.phone}）またはメール（${storeData.businessInfo.email}）でお問い合わせください」と案内してください
 4. ${storeData.customSettings.welcomeMessage}のトーンを維持してください
