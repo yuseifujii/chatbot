@@ -74,7 +74,7 @@ ${storeData.faq.map((item, index) => `
           { role: 'system', content: systemPrompt },
           { role: 'user', content: message }
         ],
-        model: 'gpt-5-mini',
+        model: 'gpt-5-mini-2025-08-07',
         temperature: 1.0,
         max_tokens: 300,
       })
