@@ -16,7 +16,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'こんにちは！AI ChatBot Proのデモボットです。どのようなご質問でもお答えします。',
+      text: 'こんにちは！ToreMock ChatBotです。お気軽にご質問ください。',
       sender: 'bot',
       timestamp: new Date()
     }
@@ -77,7 +77,7 @@ export default function ChatBot() {
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || data.error || '回答できませんでした。',
+        text: data.response || data.error || 'エラーが発生しました。',
         sender: 'bot',
         timestamp: new Date()
       }
