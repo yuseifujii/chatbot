@@ -43,7 +43,7 @@ export default function Header() {
           {/* ロゴ */}
           <div className="flex items-center">
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              AI ChatBot Pro
+              トレモックChatBot
             </span>
           </div>
 
