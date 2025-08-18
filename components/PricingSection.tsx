@@ -177,7 +177,7 @@ export default function PricingSection() {
               </p>
               <Link href="/form" passHref>
                 <button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                  お見積もりを依頼
+                  お申し込みはこちら
                 </button>
               </Link>
             </div>

@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function FormPage() {
   return (
@@ -19,6 +20,7 @@ export default function FormPage() {
           </iframe>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
