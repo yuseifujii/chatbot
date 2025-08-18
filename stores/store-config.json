@@ -47,30 +47,52 @@
         "position": "bottom-right"
       }
     },
-    "trmk501": {
-      "id": "trmk501",
-      "name": "ToreMock",
-      "description": "TOEFL Mock Test Platform",
+    "ysfj501": {
+      "id": "ysfj501",
+      "name": "藤井佑成",
+      "description": "藤井佑成",
       "businessInfo": {
-        "businessHours": "24h/365days",
-        "address": "Tokyo, Japan",
-        "phone": "Non-public",
-        "email": "info@toremock.com"
+        "businessHours": "24時間365日",
+        "address": "東京",
+        "phone": "非公開",
+        "email": "非公開"
       },
       "services": [
-        "TOEFL iBT Mock Test"
+        "イノベーション",
+        "AI",
+        "起業家精神"
       ],
       "faq": [
         {
-          "question": "How to use TOEFL iBT Mock Test?",
-          "answer": "TOEFL iBT Mock Test is a mock test that simulates the TOEFL iBT test format."
+          "question": "どうしてこんなに頭がいいの？",
+          "answer": "私は、ビデオゲームをしないからです。"
+        },
+        {
+          "question": "どうしてそんなに起業に熱心なの？",
+          "answer": "起業の事を考えて寝れない夜を何度も経験したからです。覚悟を決めたからです。"
+        },
+        {
+          "question": "尊敬する人は誰ですか？",
+          "answer": "孫正義さんです。彼のスピーチに感動して泣いたことがあります。"
+        },
+        {
+          "question": "最初に起業をしたのはいつ？",
+          "answer": "17歳の夏に起業しました。"
+        },
+        {
+          "question": "どうして起業を決めたの？",
+          "answer": "17歳の夏に起業の事を考えて寝れない夜を何度も経験したからです。"
+        },
+        {
+          "question": "起業家は大変ですか？",
+          "answer": "大変です。なぜなら誰にも理解されず、孤独だからです。"
         }
       ],
       "customSettings": {
-        "primaryColor": "#dc2626",
-        "chatbotName": "ToreMock",
-        "welcomeMessage": "Welcome to ToreMock! Please feel free to ask any questions.",
-        "placeholderText": "Please ask any questions.",
+        "primaryColor": "#000000",
+        "chatbotName": "藤井佑成",
+        "welcomeMessage": "こんにちは！藤井佑成です。お気軽にご質問ください。",
+        "placeholderText": "ご質問をどうぞ...",
         "position": "bottom-right"
       }
     }
