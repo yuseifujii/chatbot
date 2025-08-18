@@ -47,7 +47,7 @@ export default function ChatBot() {
     setInputText('')
     setIsTyping(true)
 
-    // API呼び出しをシミュレート（実際の実装では本物のAPIを呼び出す）
+    // API呼び出し
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -58,17 +58,25 @@ export default function ChatBot() {
         })
       })
 
+      console.log('API Response Status:', response.status)
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
       const data = await response.json()
+      console.log('API Response Data:', data)
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || 'お問い合わせありがとうございます。ただいま回答を準備しております。',
+        text: data.response || data.error || 'お問い合わせありがとうございます。ただいま回答を準備しております。',
         sender: 'bot',
         timestamp: new Date()
       }
 
       setMessages(prev => [...prev, botMessage])
     } catch (error) {
+      console.error('Chat API Error:', error)
       // エラー時のフォールバック
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),

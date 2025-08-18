@@ -30,12 +30,15 @@ const openaiApiKey = process.env.OPENAI_API_KEY
 export async function POST(request: NextRequest) {
   try {
     const { message, storeId } = await request.json()
+    console.log('Received request:', { message, storeId })
 
     // store-config.jsonからストアデータを取得
     const storeData = storeConfig.stores[storeId as keyof typeof storeConfig.stores] || storeConfig.stores['demo']
+    console.log('Store data found:', !!storeData)
 
     // OpenAI APIが設定されている場合
     if (openaiApiKey) {
+      console.log('Using OpenAI API')
       const openai = new OpenAI({
         apiKey: openaiApiKey,
       })
@@ -79,11 +82,17 @@ ${storeData.faq.map((item, index) => `
         max_completion_tokens: 300,
       })
 
+      console.log('OpenAI response received:', {
+        content: completion.choices[0].message.content,
+        usage: completion.usage
+      })
+
       return NextResponse.json({
         response: completion.choices[0].message.content,
         storeId: storeId
       })
     } else {
+      console.log('Using fallback response (no OpenAI API key)')
       // OpenAI APIキーがない場合のフォールバック応答
       let response = `${storeData.customSettings.chatbotName}です。お問い合わせありがとうございます。`
 
