@@ -19,8 +19,5 @@
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
-  ],
-  "env": {
-    "OPENAI_API_KEY": "@openai_api_key"
-  }
+  ]
 }
