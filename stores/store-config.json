@@ -42,7 +42,7 @@
       "customSettings": {
         "primaryColor": "#2563eb",
         "chatbotName": "トレモックのチャットボット",
-        "welcomeMessage": "こんにちは！トレモックのチャットボットです。どのようなご質問でもお答えします。",
+        "welcomeMessage": "こんにちは！トレモックのチャットボットです。お気軽にご質問ください。",
         "placeholderText": "メッセージを入力...",
         "position": "bottom-right"
       }

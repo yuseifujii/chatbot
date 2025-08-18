@@ -68,12 +68,6 @@ export default function ProblemsSection() {
               <p className="text-gray-600 leading-relaxed">
                 {problem.description}
               </p>
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <p className="text-sm text-gray-500">
-                  <span className="text-red-500 font-semibold">87%</span>
-                  の企業が同じ課題を抱えています
-                </p>
-              </div>
             </motion.div>
           ))}
         </div>

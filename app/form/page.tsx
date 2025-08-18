@@ -1,0 +1,24 @@
+import Header from '@/components/Header';
+
+export default function FormPage() {
+  return (
+    <>
+      <Header />
+      <main className="container mx-auto px-4 py-24">
+        <h1 className="text-4xl font-bold text-center mb-8">お問い合わせフォーム</h1>
+        <div className="aspect-w-16 aspect-h-9">
+          <iframe
+            src="https://docs.google.com/forms/d/1XTklvZBAxtJlvJXQfoLFhPRHtMzTwNo9gjp3OiW8W5U/edit?embedded=true"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+          >
+            読み込んでいます…
+          </iframe>
+        </div>
+      </main>
+    </>
+  );
+}

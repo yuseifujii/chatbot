@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 const navItems = [
   { label: 'ホーム', href: '#hero' },
-  { label: '課題', href: '#problems' },
   { label: 'サービス', href: '#services' },
   { label: '料金', href: '#pricing' },
   { label: 'お問い合わせ', href: '#contact' },
@@ -63,9 +63,11 @@ export default function Header() {
 
           {/* CTAボタン */}
           <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
-              無料相談はこちら
-            </button>
+            <Link href="/form" passHref>
+              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
+                お申し込み
+              </button>
+            </Link>
           </div>
 
           {/* モバイルメニューボタン */}
@@ -91,9 +93,11 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
-              <button className="mx-4 mt-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
-                無料相談はこちら
-              </button>
+              <Link href="/form" passHref>
+                <button className="mx-4 mt-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
+                  お申し込み
+                </button>
+              </Link>
             </nav>
           </div>
         )}

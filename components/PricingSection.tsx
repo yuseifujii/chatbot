@@ -2,6 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { Check, Star, TrendingUp } from 'lucide-react'
+import Link from 'next/link'
+
+declare global {
+  interface Window {
+    openChatbot: () => void;
+  }
+}
 
 const pricingPlans = [
   {
@@ -167,9 +174,11 @@ export default function PricingSection() {
               <p className="text-sm opacity-90">
                 ※ 追加費用は一切かかりません
               </p>
-              <button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                お見積もりを依頼
-              </button>
+              <Link href="/form" passHref>
+                <button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                  お見積もりを依頼
+                </button>
+              </Link>
             </div>
           </div>
         </motion.div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MessageSquare, Clock, Users } from 'lucide-react'
+import Link from 'next/link'
 
 export default function HeroSection() {
   return (
@@ -26,10 +27,15 @@ export default function HeroSection() {
               Webサイトに簡単設置
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                今すぐ導入相談
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300">
+              <Link href="/form" passHref>
+                <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  今すぐ導入
+                </button>
+              </Link>
+              <button
+                onClick={() => window.openChatbot && window.openChatbot()}
+                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300"
+              >
                 デモを体験
               </button>
             </div>
@@ -98,7 +104,7 @@ export default function HeroSection() {
                 className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4"
               >
                 <p className="text-sm font-semibold text-gray-800">導入企業</p>
-                <p className="text-2xl font-bold text-blue-600">500社突破！</p>
+                <p className="text-2xl font-bold text-blue-600">急増中！</p>
               </motion.div>
             </div>
             {/* 背景装飾 */}

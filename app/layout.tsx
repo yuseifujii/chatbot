@@ -5,21 +5,21 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI ChatBot Pro - ローカルビジネス向けAIチャットボット導入サービス",
-  description: "貴社専用のAIチャットボットをWebサイトに簡単導入。24時間365日自動でお客様対応。初期費用29,000円、月額3,900円から。",
-  keywords: "AIチャットボット,カスタマーサポート,自動応答,ローカルビジネス,Web導入",
+  title: "ToreMock ChatBot",
+  description: "ToreMock ChatBotは、貴社専用のAIチャットボットです。Webサイトに簡単導入できます。",
+  keywords: "ToreMock ChatBot,AIチャットボット,カスタマーサポート,自動応答,ローカルビジネス,Web導入",
   openGraph: {
-    title: "AI ChatBot Pro - AIが自動でお客様対応",
-    description: "貴社に特化したAIチャットボットをWebサイトに簡単設置",
+    title: "ToreMock ChatBot",
+    description: "ToreMock ChatBotは、貴社専用のAIチャットボットです。Webサイトに簡単導入できます。",
     type: "website",
     locale: "ja_JP",
     url: "https://chatbot.toremock.com",
-    siteName: "AI ChatBot Pro",
+    siteName: "ToreMock ChatBot",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI ChatBot Pro - AIが自動でお客様対応",
-    description: "貴社に特化したAIチャットボットをWebサイトに簡単設置",
+    title: "ToreMock ChatBot",
+    description: "ToreMock ChatBotは、貴社専用のAIチャットボットです。Webサイトに簡単導入できます。",
   },
   robots: {
     index: true,
