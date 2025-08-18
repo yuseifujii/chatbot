@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react'
+import { useChatbot } from '@/contexts/ChatbotContext'
 
 interface Message {
   id: string
@@ -12,7 +13,7 @@ interface Message {
 }
 
 export default function ChatBot() {
-  const [isOpen, setIsOpen] = useState(false)
+  const { isOpen, openChatbot, closeChatbot } = useChatbot();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -108,7 +109,7 @@ export default function ChatBot() {
             exit={{ scale: 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => setIsOpen(true)}
+            onClick={openChatbot}
             className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
           >
             <MessageCircle size={28} />
@@ -140,7 +141,7 @@ export default function ChatBot() {
                 </div>
               </div>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={closeChatbot}
                 className="p-2 hover:bg-white/20 rounded-lg transition-colors"
               >
                 <X size={20} />

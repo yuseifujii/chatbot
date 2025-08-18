@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Script from 'next/script';
+import { ChatbotProvider } from '@/contexts/ChatbotContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,8 +43,9 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <body className={inter.className}>
-        {children}
-        <Script src="/chatbot.js" strategy="lazyOnload" />
+        <ChatbotProvider>
+          {children}
+        </ChatbotProvider>
       </body>
     </html>
   );
