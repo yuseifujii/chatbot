@@ -8,19 +8,19 @@ const problems = [
     icon: Clock,
     title: "営業時間外の問い合わせ",
     description: "夜間や休日の問い合わせに対応できず、機会損失が発生していませんか？",
-    color: "from-orange-500 to-red-500"
+    color: "from-red-500 to-red-600"
   },
   {
     icon: UserX,
     title: "スタッフ不足でFAQ対応が大変",
     description: "同じような質問に何度も答えるのに時間を取られていませんか？",
-    color: "from-purple-500 to-pink-500"
+    color: "from-red-400 to-red-500"
   },
   {
     icon: ClipboardList,
     title: "メニュー案内の手間",
     description: "商品やサービスの説明を手作業で繰り返し対応するのは非効率的です",
-    color: "from-green-500 to-teal-500"
+    color: "from-red-600 to-red-700"
   }
 ]
 

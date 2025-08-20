@@ -24,7 +24,7 @@ const pricingPlans = [
       "導入後1ヶ月サポート"
     ],
     isOneTime: true,
-    color: "from-purple-600 to-purple-700"
+    color: "from-blue-600 to-blue-700"
   },
   {
     title: "サービス維持費",
