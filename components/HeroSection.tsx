@@ -7,20 +7,30 @@ import Image from 'next/image'
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden">
+    <section id="hero" className="relative overflow-hidden min-h-[560px] md:min-h-[680px]">
       {/* フルブリード背景画像 */}
       <div className="absolute inset-0 -z-10">
         <div className="relative w-full h-full">
+          {/* デスクトップ（人物が右にくるアートディレクション） */}
           <Image
-            src="/hero-bg.jpg"
-            alt="ヒーロー背景"
+            src="/hero-human-desktop.jpg"
+            alt="ローカルビジネスの温かい雰囲気の背景（人物は右側）"
             fill
             priority
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            className="object-cover hidden md:block object-[75%_50%]"
+            sizes="(max-width: 768px) 0px, 100vw"
           />
-          {/* オーバーレイ（読みやすさ向上） */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/60 via-blue-900/40 to-black/30" />
+          {/* モバイル（人物が中央寄りで見切れにくい） */}
+          <Image
+            src="/hero-human-mobile.jpg"
+            alt="ローカルビジネスの温かい雰囲気の背景（モバイル用）"
+            fill
+            priority
+            className="object-cover md:hidden object-center"
+            sizes="100vw"
+          />
+          {/* オーバーレイ（読みやすさ向上・温かみのトーン） */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/50 via-amber-800/35 to-black/25" />
         </div>
       </div>
 
