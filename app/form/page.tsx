@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StripeBuyButtonSection from '@/components/StripeBuyButtonSection';
 
 export default function FormPage() {
   return (
@@ -19,6 +20,8 @@ export default function FormPage() {
             読み込んでいます…
           </iframe>
         </div>
+
+        <StripeBuyButtonSection />
       </main>
       <Footer />
     </>
