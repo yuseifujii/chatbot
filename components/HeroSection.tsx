@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { MessageSquare, Clock, Users, ShieldCheck, CheckCircle2, Sparkles } from 'lucide-react'
+import { ShieldCheck, CheckCircle2, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -20,12 +20,14 @@ export default function HeroSection() {
             className="object-cover hidden md:block object-[75%_50%]"
             sizes="(max-width: 768px) 0px, 100vw"
           />
-          {/* モバイルは人物なしのグラデーション背景 */}
-          <div className="absolute inset-0 md:hidden bg-gradient-to-br from-slate-900 via-blue-900/70 to-slate-800" />
+          {/* モバイルは人物なしのリッチな多層グラデーション背景 */}
+          <div className="absolute inset-0 md:hidden [background-image:radial-gradient(1200px_600px_at_0%_0%,rgba(56,189,248,0.18),transparent_60%),radial-gradient(900px_500px_at_100%_20%,rgba(99,102,241,0.22),transparent_60%),linear-gradient(135deg,#0b1220_0%,#0f1f3a_50%,#0a172a_100%)] [background-size:100%_100%,100%_100%,100%_100%] [background-repeat:no-repeat]" />
+          {/* モバイル質感オーバーレイ（微細ドット） */}
+          <div className="absolute inset-0 md:hidden pointer-events-none [background-image:radial-gradient(rgba(255,255,255,0.05)_0.5px,transparent_0.5px)] [background-size:10px_10px] opacity-10 mix-blend-overlay" />
           {/* デスクトップ向けクールトーンのオーバーレイ */}
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/40 via-slate-900/25 to-black/20" />
-          {/* 左側の可読性向上レイヤー（強ブラー） */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-[78%] md:w-[55%] hidden md:block bg-gradient-to-r from-black/45 via-black/30 to-transparent backdrop-blur-2xl" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/40 via-slate-900/25 to-slate-900/15" />
+          {/* 左側の可読性向上レイヤー（ブラー控えめ＋フェザー） */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:block w-[70%] lg:w-[55%] bg-gradient-to-r from-black/40 via-black/20 to-transparent backdrop-blur-md shadow-[inset_80px_0_120px_rgba(0,0,0,0.35)]" />
         </div>
       </div>
 
