@@ -83,26 +83,23 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* メインサービス */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 mb-10 md:mb-16">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-2xl p-5 md:p-6 hover:shadow-lg transition-all duration-300"
+              className="relative bg-gradient-to-br from-blue-50/70 to-white border border-blue-100 rounded-xl p-4 md:p-5 shadow-sm"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-3 md:mb-4">
-                <service.icon className="text-white" size={20} />
+              <div className="absolute top-0 left-0 h-1 w-12 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-br-xl" />
+              <div className="w-9 h-9 md:w-10 md:h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-2.5 md:mb-3">
+                <service.icon className="text-white" size={18} />
               </div>
-              <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1.5 md:mb-2">
+              <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-1.5 md:mb-2">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-[13px] md:text-sm">
+              <p className="text-gray-600 text-[12px] md:text-sm leading-snug md:leading-relaxed">
                 {service.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
