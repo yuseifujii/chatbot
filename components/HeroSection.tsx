@@ -47,7 +47,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-custom ring-1 ring-white/40 px-2.5 py-1.5 mb-3 shadow-soft">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-custom ring-1 ring-white/40 px-2.5 py-1.5 mb-5 md:mb-6 shadow-soft">
               <Sparkles className="text-blue-700" size={16} />
               <span className="text-sm font-medium text-blue-800">10分でかんたんに開始できます</span>
             </div>

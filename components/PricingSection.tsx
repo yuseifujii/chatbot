@@ -1,6 +1,4 @@
 "use client"
-
-import { motion } from 'framer-motion'
 import { Check, Star, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 
@@ -60,13 +58,7 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-3 md:px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
-        >
+        <div className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-3 py-1.5 rounded-full mb-3 md:mb-4">
             <TrendingUp size={20} />
             <span className="font-medium">料金プラン</span>
@@ -78,16 +70,12 @@ export default function PricingSection() {
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             初期費用と月額費用のみ。隠れた費用は一切ありません
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
           {pricingPlans.map((plan, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
                 plan.isPopular ? 'ring-2 ring-blue-600 md:transform md:scale-105' : ''
               }`}
@@ -124,18 +112,12 @@ export default function PricingSection() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* 合計料金の説明 */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 md:mt-12 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white"
-        >
+        <div className="mt-10 md:mt-12 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
@@ -179,7 +161,7 @@ export default function PricingSection() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
