@@ -49,8 +49,8 @@ export default function ProblemsSection() {
           </p>
         </motion.div>
 
-        {/* コンパクトなリスト型デザイン */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3">
+        {/* 改良されたレイアウト：アイコン+見出し横並び、説明文は下 */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
@@ -58,17 +58,21 @@ export default function ProblemsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex items-start gap-3 md:gap-4 py-2.5 md:py-3 border-b border-gray-200/70 last:border-b-0"
+              className="py-4 md:py-5"
             >
-              <div className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-r ${problem.color} text-white grid place-items-center`}>
-                <problem.icon size={18} />
+              {/* アイコンと見出しを横並び */}
+              <div className="flex items-center gap-3 md:gap-4 mb-3">
+                <div className={`shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-r ${problem.color} text-white grid place-items-center`}>
+                  <problem.icon size={22} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900">
+                  {problem.title}
+                </h3>
               </div>
-              <div className="min-w-0">
-                <p className="text-sm md:text-base font-semibold text-gray-900">{problem.title}</p>
-                <p className="text-[12px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">
-                  {problem.description}
-                </p>
-              </div>
+              {/* 説明文は全体の下に配置 */}
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed pl-0">
+                {problem.description}
+              </p>
             </motion.div>
           ))}
         </div>
