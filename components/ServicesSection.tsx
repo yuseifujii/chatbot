@@ -57,6 +57,14 @@ const designCatalog = [
 ]
 
 export default function ServicesSection() {
+  const handleColorChange = (color: string) => {
+    // カスタムイベントを発火してチャットボットに色変更を通知
+    const event = new CustomEvent('chatbot-color-change', {
+      detail: { color }
+    });
+    window.dispatchEvent(event);
+  };
+
   return (
     <section id="services" className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-3 md:px-4">
@@ -134,9 +142,12 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
+          <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
             サイトデザインに合わせて選択可能
           </h3>
+          <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8">
+            色をクリックすると、右下のデモチャットボットの色がリアルタイムで変更されます
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {designCatalog.map((design, index) => (
               <motion.div
@@ -146,17 +157,22 @@ export default function ServicesSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className="relative group cursor-pointer"
+                onClick={() => handleColorChange(design.color)}
               >
                 <div 
                   className="h-28 md:h-32 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300"
                   style={{ backgroundColor: design.color }}
                 >
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 text-center">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 text-center group-hover:bg-white transition-colors">
                       <p className="text-[11px] md:text-xs font-bold text-gray-800 mb-1">{design.name}</p>
                       <p className="text-[9px] md:text-[10px] text-gray-600 leading-tight">{design.description}</p>
                       <p className="text-[8px] md:text-[9px] text-gray-500 font-mono mt-1">{design.color}</p>
+                      <p className="text-[8px] md:text-[9px] text-blue-600 font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        クリックでプレビュー
+                      </p>
                     </div>
                   </div>
                 </div>

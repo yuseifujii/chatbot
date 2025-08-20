@@ -74,9 +74,23 @@ export default function ChatBot() {
     fetchStoreConfig()
 
     const handleOpenChat = () => setIsOpen(true);
+    const handleColorChange = (event: CustomEvent) => {
+      const newColor = event.detail.color;
+      setStoreConfig(prev => ({
+        ...prev,
+        customSettings: {
+          ...prev.customSettings,
+          primaryColor: newColor
+        }
+      }));
+    };
+
     window.addEventListener('open-chatbot', handleOpenChat);
+    window.addEventListener('chatbot-color-change', handleColorChange as EventListener);
+    
     return () => {
       window.removeEventListener('open-chatbot', handleOpenChat);
+      window.removeEventListener('chatbot-color-change', handleColorChange as EventListener);
     };
   }, []);
 
