@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 
 const navItems = [
   { label: 'ホーム', href: '#hero' },
@@ -15,6 +16,8 @@ const navItems = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +29,22 @@ export default function Header() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
+    setIsMobileMenuOpen(false)
+
+    // ホーム以外のページではホームへ遷移してから該当セクションへ
+    if (pathname !== '/') {
+      router.push(`/${href}`)
+      return
+    }
+
+    // ホームではスムーススクロール
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      // 念のためハッシュを書き換え（ブラウザデフォルトのスクロールにフォールバック）
+      window.location.hash = href
     }
-    setIsMobileMenuOpen(false)
   }
 
   return (

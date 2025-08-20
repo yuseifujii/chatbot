@@ -8,7 +8,7 @@ export default function StripeBuyButtonSection() {
 
   return (
     <div className="mt-16 max-w-2xl mx-auto text-center">
-      <h2 className="text-2xl font-semibold mb-4">フォーム送信後のお支払い</h2>
+      <h2 className="text-3xl font-bold mb-4">フォーム送信後のお支払い</h2>
       <p className="text-gray-600 mb-6">
         まず上のフォームを送信してください。送信完了後、下のチェックを入れてお支払いに進みます。
       </p>
