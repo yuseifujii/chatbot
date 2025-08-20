@@ -146,7 +146,8 @@ export default function ServicesSection() {
             サイトデザインに合わせて選択可能
           </h3>
           <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8">
-            色をクリックすると、右下のデモチャットボットの色がリアルタイムで変更されます
+            色をクリックすると、右下のデモチャットボットの色がリアルタイムで変更されます。<br />
+            下記の選択肢以外の色もカスタムで選択可能です。
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {designCatalog.map((design, index) => (

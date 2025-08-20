@@ -44,7 +44,8 @@
         "chatbotName": "トレモックのチャットボット",
         "welcomeMessage": "こんにちは！トレモックのチャットボットです。お気軽にご質問ください。",
         "placeholderText": "メッセージを入力...",
-        "position": "bottom-right"
+        "position": "bottom-right",
+        "bubbleSize": "60"
       }
     },
     "ysfj501": {
@@ -89,11 +90,12 @@
         }
       ],
       "customSettings": {
-        "primaryColor": "#000000",
+        "primaryColor": "#1f2937",
         "chatbotName": "藤井佑成",
         "welcomeMessage": "こんにちは！藤井佑成です。お気軽にご質問ください。",
         "placeholderText": "ご質問をどうぞ...",
-        "position": "bottom-right"
+        "position": "bottom-right",
+        "bubbleSize": "60"
       }
     }
   }

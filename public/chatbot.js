@@ -1,6 +1,13 @@
 /**
  * AI ChatBot Pro - 埋め込みスクリプト
  * 使用方法: <script src="https://chatbot.toremock.com/chatbot.js" data-store-id="YOUR_STORE_ID"></script>
+ * 
+ * 設定は store-config.json で管理されます。
+ * storeId に対応する設定が自動的に適用されます。
+ * 
+ * 例:
+ * - demo: デモ用の設定 (青色テーマ)
+ * - ysfj501: 藤井佑成用の設定 (黒色テーマ)
  */
 
 (function() {
@@ -20,17 +27,18 @@
       chatbotName: 'AIアシスタント',
       welcomeMessage: 'こんにちは！ご質問がございましたら、お気軽にお尋ねください。',
       placeholderText: 'メッセージを入力...',
-      position: 'bottom-right'
+      position: 'bottom-right',
+      bubbleSize: '60'
     }
   };
   
-  // カスタム設定（オプション - data属性が指定されていれば上書き）
-  const position = script.getAttribute('data-position') || storeConfig.customSettings.position;
-  const primaryColor = script.getAttribute('data-primary-color') || storeConfig.customSettings.primaryColor;
-  const bubbleSize = script.getAttribute('data-bubble-size') || '60';
+  // スタイルを動的に生成する関数
+  function generateStyles() {
+    const position = storeConfig.customSettings.position || 'bottom-right';
+    const primaryColor = storeConfig.customSettings.primaryColor || '#2563eb';
+    const bubbleSize = storeConfig.customSettings.bubbleSize || '60';
 
-  // スタイルの挿入
-  const styles = `
+    return `
     .chatbot-widget-container {
       position: fixed;
       ${position === 'bottom-left' ? 'left: 20px;' : 'right: 20px;'}
@@ -288,9 +296,11 @@
       }
     }
   `;
+  }
 
-  // HTMLテンプレート
-  const template = `
+  // HTMLテンプレートを動的に生成する関数
+  function generateTemplate() {
+    return `
     <div class="chatbot-widget-container">
       <div class="chatbot-bubble" id="chatbot-bubble">
         <svg viewBox="0 0 24 24">
@@ -343,6 +353,7 @@
       </div>
     </div>
   `;
+  }
 
   // 店舗設定を取得
   async function fetchStoreConfig() {
@@ -351,21 +362,10 @@
       if (response.ok) {
         const config = await response.json();
         storeConfig = config;
-        // data属性の設定を優先
-        if (!script.getAttribute('data-primary-color')) {
-          updateColors(config.customSettings.primaryColor);
-        }
+        console.log('Store configuration loaded:', storeConfig.customSettings);
       }
     } catch (error) {
-      console.log('Using default configuration');
-    }
-  }
-
-  // カラーを動的に更新
-  function updateColors(color) {
-    const style = document.getElementById('chatbot-dynamic-styles');
-    if (style) {
-      style.textContent = style.textContent.replace(new RegExp(primaryColor, 'g'), color);
+      console.log('Failed to load store configuration, using defaults:', error);
     }
   }
 
@@ -373,15 +373,16 @@
   async function init() {
     // 店舗設定を取得
     await fetchStoreConfig();
-    // スタイルを挿入
+    
+    // 設定取得後にスタイルを動的生成して挿入
     const styleSheet = document.createElement('style');
     styleSheet.id = 'chatbot-dynamic-styles';
-    styleSheet.textContent = styles;
+    styleSheet.textContent = generateStyles();
     document.head.appendChild(styleSheet);
 
-    // HTMLを挿入
+    // 設定取得後にHTMLテンプレートを動的生成して挿入
     const container = document.createElement('div');
-    container.innerHTML = template;
+    container.innerHTML = generateTemplate();
     document.body.appendChild(container.firstElementChild);
 
     // イベントリスナーの設定
