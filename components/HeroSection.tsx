@@ -122,7 +122,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="card p-4 md:p-6 text-center col-span-2 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
+                className="card p-4 md:p-6 text-center col-span-1 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
                 <p className="text-xl md:text-2xl font-bold leading-tight">最短2日で実装</p>
               </motion.div>
