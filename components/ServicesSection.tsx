@@ -7,32 +7,32 @@ const services = [
   {
     icon: Bot,
     title: "カスタムチャットボット開発",
-    description: "貴社の業務内容に完全対応したAIチャットボットを開発します"
+    description: "貴社の業務内容に完全対応したAIチャットボットを独自に開発いたします"
   },
   {
     icon: Code,
     title: "簡単スクリプト導入",
-    description: "たった1行のコードをコピー&ペーストするだけで導入完了"
+    description: "たった1行のコードをコピー&ペーストするだけで導入が完了します"
   },
   {
     icon: Brain,
-    title: "専門知識の学習",
-    description: "商品情報、FAQ、営業時間など貴社独自の情報を学習させます"
+    title: "チャット履歴の共有",
+    description: "お客様とAIチャットボットのやり取りをすべて共有いたします"
   },
   {
     icon: Palette,
     title: "デザインカスタマイズ",
-    description: "Webサイトのデザインに合わせてチャットボットの見た目を調整"
+    description: "Webサイトのデザインに合わせてチャットボットの見た目を調整いたします"
   },
   {
     icon: Shield,
-    title: "セキュアな運用",
+    title: "安全な運用",
     description: "SSL暗号化通信と安全なデータ管理で安心してご利用いただけます"
   },
   {
     icon: Zap,
-    title: "高速レスポンス",
-    description: "最新のAI技術により、瞬時に適切な回答を生成します"
+    title: "最短2日で実装",
+    description: "お申し込みを頂いてから2日~5日でカスタムAIチャットボットを開発いたします"
   }
 ]
 
@@ -85,7 +85,7 @@ export default function ServicesSection() {
         {/* メインサービス（行リスト型） */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3 mb-10 md:mb-16">
           {services.map((service, index) => (
-            <div key={index} className="flex items-start gap-3 md:gap-4 py-2.5 md:py-3 border-b border-gray-200/70 last:border-b-0">
+            <div key={index} className="flex items-start gap-3 md:gap-4 py-2.5 md:py-3 border-b border-gray-200/70">
               <div className="shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-600 text-white grid place-items-center">
                 <service.icon size={18} />
               </div>
