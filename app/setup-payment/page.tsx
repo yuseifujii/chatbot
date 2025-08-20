@@ -103,7 +103,7 @@ export default function SetupPaymentPage() {
           <div className="bg-blue-50 p-6 rounded-lg mb-8">
             <h2 className="text-xl font-bold mb-2">自動引き落とし設定</h2>
             <p className="text-gray-700 mb-4">
-              初回請求書のお支払い完了後、2年目以降の年間利用料（¥19,000）が
+              初回請求書のお支払い完了後は、2年目以降の年間利用料（¥19,000）は
               登録されたカードから自動的に引き落とされます。
             </p>
             <div className="bg-white p-4 rounded border-l-4 border-green-500">
