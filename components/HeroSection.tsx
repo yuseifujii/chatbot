@@ -88,7 +88,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="text-cyan-300" size={24} />
-                <span className="text-white text-base md:text-lg font-semibold">最短2日で実装</span>
+                <span className="text-white text-base md:text-lg font-semibold">どなたでも簡単に導入可能</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="text-cyan-300" size={24} />
@@ -124,7 +124,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.35 }}
                 className="card p-4 md:p-6 text-center col-span-2 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xl md:text-2xl font-bold leading-tight">だれでも簡単に<br/>導入可能</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">最短2日で実装</p>
               </motion.div>
             </div>
           </motion.div>
