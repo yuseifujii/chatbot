@@ -58,10 +58,14 @@ export default function FormPage() {
 
             <Script src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" async />
             <div className="flex justify-center mb-4">
-              <stripe-buy-button
+              {/* <stripe-buy-button
                 buy-button-id="buy_btn_1Ry59RRocVI9NL8DGprwBRVd"
                 publishable-key="pk_live_51R0zVYRocVI9NL8Dbta57vcirBPCRQgmFQoEYcUzB5FmpvbGpGZAsjRfK9gJQer9huuimOyzouuOIoSRv6HI67bS00G0ZMs2QK"
-              ></stripe-buy-button>
+              ></stripe-buy-button> */}
+              <stripe-buy-button
+                  buy-button-id="buy_btn_1RyBSrRocVI9NL8DlTBOzOSY"
+                  publishable-key="pk_live_51R0zVYRocVI9NL8Dbta57vcirBPCRQgmFQoEYcUzB5FmpvbGpGZAsjRfK9gJQer9huuimOyzouuOIoSRv6HI67bS00G0ZMs2QK"
+                ></stripe-buy-button>
             </div>
             <p className="text-sm text-gray-500">
               お支払い完了後、自動的に次のステップに進みます。
