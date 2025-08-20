@@ -82,23 +82,19 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* メインサービス */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 mb-10 md:mb-16">
+        {/* メインサービス（行リスト型） */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3 mb-10 md:mb-16">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="relative bg-gradient-to-br from-blue-50/70 to-white border border-blue-100 rounded-xl p-4 md:p-5 shadow-sm"
-            >
-              <div className="absolute top-0 left-0 h-1 w-12 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-br-xl" />
-              <div className="w-9 h-9 md:w-10 md:h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-2.5 md:mb-3">
-                <service.icon className="text-white" size={18} />
+            <div key={index} className="flex items-start gap-3 md:gap-4 py-2.5 md:py-3 border-b border-gray-200/70 last:border-b-0">
+              <div className="shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-600 text-white grid place-items-center">
+                <service.icon size={18} />
               </div>
-              <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-1.5 md:mb-2">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 text-[12px] md:text-sm leading-snug md:leading-relaxed">
-                {service.description}
-              </p>
+              <div className="min-w-0">
+                <p className="text-sm md:text-base font-semibold text-gray-900">{service.title}</p>
+                <p className="text-[12px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -112,7 +108,7 @@ export default function ServicesSection() {
           className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-6 md:p-12 text-white mb-12 md:mb-16"
         >
           <h3 className="text-xl md:text-3xl font-bold mb-6 md:mb-8 text-center">
-            以下の内容を学習させた専用チャットボットを提供
+            以下の内容を学習させた専用チャットボットを提供します
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {learningContents.map((content, index) => (
