@@ -28,12 +28,11 @@ const pricingPlans = [
   },
   {
     title: "サービス維持費",
-    price: "3,900",
-    unit: "円/月",
+    price: "19,000",
+    unit: "円/年",
     description: "月額利用料",
     features: [
       "24時間365日稼働",
-      "月間10,000メッセージまで",
       "定期的なAI性能アップデート",
       "データバックアップ",
       "技術サポート"
@@ -42,16 +41,15 @@ const pricingPlans = [
     color: "from-blue-600 to-blue-700"
   },
   {
-    title: "導入サポート",
-    price: "2,900",
-    unit: "円",
+    title: "導入サポート/追加変更",
+    price: "無料",
+    unit: "",
     description: "オプションサービス",
     features: [
       "設置作業代行",
       "スタッフ向け使い方講習",
       "カスタマイズ相談",
-      "FAQ作成支援",
-      "初期設定最適化"
+      "AIの知識の追加変更"
     ],
     isOptional: true,
     isPopular: true,
@@ -142,7 +140,7 @@ export default function PricingSection() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold mb-4">
-                初月のお支払い例
+                初年度のお支払い例
               </h3>
               <div className="space-y-2">
                 <div className="flex justify-between">
@@ -150,27 +148,27 @@ export default function PricingSection() {
                   <span>¥29,000</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>サービス維持費（初月）</span>
-                  <span>¥3,900</span>
+                  <span>サービス維持費</span>
+                  <span>¥19,000</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>導入サポート（オプション）</span>
-                  <span>¥2,900</span>
+                  <span>導入サポート/追加変更（オプション）</span>
+                  <span>無料</span>
                 </div>
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between font-bold text-lg">
                     <span>合計</span>
-                    <span>¥35,800</span>
+                    <span>¥48,000</span>
                   </div>
                 </div>
               </div>
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4">
-                2ヶ月目以降
+                2年目以降
               </h3>
               <p className="text-3xl font-bold mb-2">
-                月額 ¥3,900 のみ
+                年額 ¥19,000 のみ
               </p>
               <p className="text-sm opacity-90">
                 ※ 追加費用は一切かかりません
