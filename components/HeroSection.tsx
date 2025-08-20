@@ -26,12 +26,12 @@ export default function HeroSection() {
               <span className="text-sm font-medium text-blue-700">10分でかんたんに開始できます</span>
             </div>
 
-            <h1 className="text-[30px] sm:text-[32px] leading-tight tracking-[-0.01em] font-extrabold md:heading-2xl md:leading-[1.1] md:tracking-[-0.015em] text-gray-900 mb-3 md:mb-4">
+            <h1 className="text-[30px] sm:text-[32px] leading-tight tracking-[-0.01em] font-extrabold md:heading-3xl md:leading-[1.1] md:tracking-[-0.015em] text-gray-900 mb-3 md:mb-4">
               貴社専用の
               <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">AIチャット</span>
               で
               <br className="hidden md:block" />
-              あらゆる顧客対応を効率化
+              顧客対応を効率化
             </h1>
             <p className="text-base md:text-xl text-gray-700 leading-relaxed">
               WebサイトやLPにすぐ設置できる、貴社専用のAIチャットボット。
@@ -142,18 +142,6 @@ export default function HeroSection() {
             {/* 背景の角度付きグラデーション */}
             <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl rotate-3 opacity-10 blur-2xl" />
           </motion.div>
-        </div>
-
-        {/* ロゴ（信頼の可視化） */}
-        <div className="mt-10 md:mt-14">
-          <p className="text-[11px] md:text-xs text-gray-500 uppercase tracking-wider text-center lg:text-left mb-3 md:mb-4">多くの企業にご利用いただいています</p>
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 md:gap-x-8 gap-y-3 md:gap-y-4 opacity-70">
-            <Image src="/vercel.svg" alt="Partner logo" width={76} height={22} />
-            <Image src="/next.svg" alt="Partner logo" width={76} height={22} />
-            <Image src="/globe.svg" alt="Partner logo" width={76} height={22} />
-            <Image src="/window.svg" alt="Partner logo" width={76} height={22} />
-            <Image src="/file.svg" alt="Partner logo" width={76} height={22} />
-          </div>
         </div>
       </div>
     </section>

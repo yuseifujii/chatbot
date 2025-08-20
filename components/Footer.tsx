@@ -30,9 +30,9 @@ const Footer = () => {
               <h4 className="font-semibold mb-3 md:mb-4">お問い合わせ</h4>
               <ul className="space-y-2 text-gray-400 text-[13px] md:text-sm">
                 <li>合同会社ToreMock</li>
-                <li>✉️ info@toremock.com</li>
-                <li>🏢 千葉県船橋市薬園台六丁目八番二号</li>
-                <li>⏰ 平日 9:00-18:00</li>
+                <li>info@toremock.com</li>
+                <li>千葉県船橋市薬園台六丁目八番二号</li>
+                <li>平日 9:00-18:00</li>
               </ul>
             </div>
           </div>
