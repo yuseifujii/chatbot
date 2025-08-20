@@ -11,16 +11,26 @@ interface Message {
   timestamp: Date
 }
 
+interface StoreConfig {
+  customSettings: {
+    primaryColor: string
+    chatbotName: string
+    welcomeMessage: string
+    placeholderText: string
+  }
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: 'こんにちは！ToreMock ChatBotです。お気軽にご質問ください。',
-      sender: 'bot',
-      timestamp: new Date()
+  const [storeConfig, setStoreConfig] = useState<StoreConfig>({
+    customSettings: {
+      primaryColor: '#2563eb',
+      chatbotName: 'AI アシスタント',
+      welcomeMessage: 'こんにちは！ToreMock ChatBotです。お気軽にご質問ください。',
+      placeholderText: 'メッセージを入力...'
     }
-  ])
+  })
+  const [messages, setMessages] = useState<Message[]>([])
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -34,6 +44,35 @@ export default function ChatBot() {
   }, [messages])
 
   useEffect(() => {
+    // 店舗設定を取得
+    const fetchStoreConfig = async () => {
+      try {
+        const response = await fetch('/api/store-config?storeId=demo')
+        if (response.ok) {
+          const config = await response.json()
+          setStoreConfig(config)
+          // 初期メッセージを設定
+          setMessages([{
+            id: '1',
+            text: config.customSettings.welcomeMessage || 'こんにちは！お気軽にご質問ください。',
+            sender: 'bot',
+            timestamp: new Date()
+          }])
+        }
+      } catch (error) {
+        console.log('Using default configuration')
+        // デフォルトの初期メッセージを設定
+        setMessages([{
+          id: '1',
+          text: storeConfig.customSettings.welcomeMessage,
+          sender: 'bot',
+          timestamp: new Date()
+        }])
+      }
+    }
+
+    fetchStoreConfig()
+
     const handleOpenChat = () => setIsOpen(true);
     window.addEventListener('open-chatbot', handleOpenChat);
     return () => {
@@ -117,7 +156,10 @@ export default function ChatBot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
+            className="fixed bottom-6 right-6 z-50 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
+            style={{ 
+              background: `linear-gradient(to right, ${storeConfig.customSettings.primaryColor}, ${storeConfig.customSettings.primaryColor}dd)` 
+            }}
           >
             <MessageCircle size={28} />
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -137,13 +179,18 @@ export default function ChatBot() {
             style={{ maxWidth: 'calc(100vw - 48px)', maxHeight: 'calc(100vh - 48px)' }}
           >
             {/* ヘッダー */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex items-center justify-between">
+            <div 
+              className="text-white p-4 flex items-center justify-between"
+              style={{ 
+                background: `linear-gradient(to right, ${storeConfig.customSettings.primaryColor}, ${storeConfig.customSettings.primaryColor}dd)` 
+              }}
+            >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                   <Bot size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold">AI アシスタント</h3>
+                  <h3 className="font-bold">{storeConfig.customSettings.chatbotName}</h3>
                   <p className="text-xs opacity-90">オンライン</p>
                 </div>
               </div>
@@ -167,20 +214,28 @@ export default function ChatBot() {
                   <div className={`flex items-start gap-2 max-w-[80%] ${
                     message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'
                   }`}>
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      message.sender === 'user' ? 'bg-blue-600' : 'bg-gray-300'
-                    }`}>
+                    <div 
+                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{
+                        backgroundColor: message.sender === 'user' ? storeConfig.customSettings.primaryColor : '#d1d5db'
+                      }}
+                    >
                       {message.sender === 'user' ? (
                         <User size={16} className="text-white" />
                       ) : (
                         <Bot size={16} className="text-gray-700" />
                       )}
                     </div>
-                    <div className={`rounded-2xl px-4 py-2 ${
-                      message.sender === 'user' 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-white text-gray-800 shadow-sm'
-                    }`}>
+                    <div 
+                      className={`rounded-2xl px-4 py-2 ${
+                        message.sender === 'user' 
+                          ? 'text-white' 
+                          : 'bg-white text-gray-800 shadow-sm'
+                      }`}
+                      style={{
+                        backgroundColor: message.sender === 'user' ? storeConfig.customSettings.primaryColor : undefined
+                      }}
+                    >
                       <p className="whitespace-pre-wrap">{message.text}</p>
                       <p className={`text-xs mt-1 ${
                         message.sender === 'user' ? 'text-blue-100' : 'text-gray-400'
@@ -225,14 +280,21 @@ export default function ChatBot() {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="メッセージを入力..."
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                  placeholder={storeConfig.customSettings.placeholderText}
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 transition-all"
+                  style={{
+                    '--tw-ring-color': `${storeConfig.customSettings.primaryColor}33`,
+                    borderColor: inputText ? storeConfig.customSettings.primaryColor : '#d1d5db'
+                  } as React.CSSProperties}
                   disabled={isTyping}
                 />
                 <button
                   onClick={handleSend}
                   disabled={isTyping || !inputText.trim()}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-2 rounded-full hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-white p-2 rounded-full hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ 
+                    background: `linear-gradient(to right, ${storeConfig.customSettings.primaryColor}, ${storeConfig.customSettings.primaryColor}dd)` 
+                  }}
                 >
                   <Send size={20} />
                 </button>

@@ -48,12 +48,12 @@ const learningContents = [
 ]
 
 const designCatalog = [
-  { name: "モダンスタイル", color: "from-blue-500 to-purple-500" },
-  { name: "ミニマルスタイル", color: "from-gray-400 to-gray-600" },
-  { name: "ポップスタイル", color: "from-pink-400 to-orange-400" },
-  { name: "エレガントスタイル", color: "from-purple-400 to-pink-400" },
-  { name: "ビジネススタイル", color: "from-blue-600 to-blue-800" },
-  { name: "ナチュラルスタイル", color: "from-green-400 to-teal-400" }
+  { name: "コーポレートブルー", color: "#2563eb", description: "信頼感のある企業向けカラー" },
+  { name: "エレガントブラック", color: "#1f2937", description: "高級感のあるダークカラー" },
+  { name: "フレンドリーオレンジ", color: "#f97316", description: "親しみやすい暖色系" },
+  { name: "ナチュラルグリーン", color: "#059669", description: "自然・健康系ブランド向け" },
+  { name: "ロイヤルパープル", color: "#7c3aed", description: "上品で洗練されたカラー" },
+  { name: "エナジーレッド", color: "#dc2626", description: "情熱的で力強いカラー" }
 ]
 
 export default function ServicesSection() {
@@ -148,10 +148,15 @@ export default function ServicesSection() {
                 whileHover={{ scale: 1.05 }}
                 className="relative group cursor-pointer"
               >
-                <div className={`h-28 md:h-32 bg-gradient-to-br ${design.color} rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2">
-                      <p className="text-[11px] md:text-xs font-medium text-gray-800">{design.name}</p>
+                <div 
+                  className="h-28 md:h-32 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  style={{ backgroundColor: design.color }}
+                >
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 text-center">
+                      <p className="text-[11px] md:text-xs font-bold text-gray-800 mb-1">{design.name}</p>
+                      <p className="text-[9px] md:text-[10px] text-gray-600 leading-tight">{design.description}</p>
+                      <p className="text-[8px] md:text-[9px] text-gray-500 font-mono mt-1">{design.color}</p>
                     </div>
                   </div>
                 </div>
