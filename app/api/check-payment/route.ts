@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
       success: true,
       invoiceId: invoice.id,
       status: invoice.status,
-      paid: invoice.paid,
+      paid: invoice.status === 'paid',
       amount: invoice.amount_paid,
       currency: invoice.currency,
       invoiceNumber: invoice.number,

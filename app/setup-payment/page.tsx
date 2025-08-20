@@ -4,77 +4,24 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Script from 'next/script';
 
 export default function SetupPaymentPage() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
-  const [stripe, setStripe] = useState<any>(null);
-  const [elements, setElements] = useState<any>(null);
-  const [clientSecret, setClientSecret] = useState('');
   const [setupComplete, setSetupComplete] = useState(false);
+  const [subscriptionId, setSubscriptionId] = useState('');
+  const [invoiceId, setInvoiceId] = useState('');
 
   useEffect(() => {
-    const subscriptionId = searchParams.get('subscription_id');
-    const invoiceId = searchParams.get('invoice_id');
+    const subId = searchParams.get('subscription_id');
+    const invId = searchParams.get('invoice_id');
     
-    if (subscriptionId && invoiceId) {
-      fetchSetupIntent(subscriptionId, invoiceId);
+    if (subId && invId) {
+      setSubscriptionId(subId);
+      setInvoiceId(invId);
     }
+    setLoading(false);
   }, [searchParams]);
-
-  const fetchSetupIntent = async (subscriptionId: string, invoiceId: string) => {
-    try {
-      const response = await fetch('/api/setup-payment-method', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subscriptionId, invoiceId }),
-      });
-      
-      const data = await response.json();
-      if (data.success) {
-        setClientSecret(data.clientSecret);
-      }
-    } catch (error) {
-      console.error('Setup intent fetch failed:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleStripeLoad = () => {
-    if (window.Stripe) {
-      const stripeInstance = window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-      setStripe(stripeInstance);
-      
-      if (clientSecret) {
-        const elementsInstance = stripeInstance.elements({
-          clientSecret,
-          appearance: { theme: 'stripe' }
-        });
-        setElements(elementsInstance);
-      }
-    }
-  };
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    
-    if (!stripe || !elements) return;
-
-    const { error } = await stripe.confirmSetup({
-      elements,
-      confirmParams: {
-        return_url: `${window.location.origin}/form?payment=success&setup=complete`,
-      },
-    });
-
-    if (error) {
-      console.error('Payment setup failed:', error);
-    } else {
-      setSetupComplete(true);
-    }
-  };
 
   if (loading) {
     return (
@@ -91,67 +38,48 @@ export default function SetupPaymentPage() {
 
   return (
     <>
-      <Script 
-        src="https://js.stripe.com/v3/" 
-        onLoad={handleStripeLoad}
-      />
       <Header />
       <main className="container mx-auto px-4 py-24">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-8">支払い方法の設定</h1>
+        <div className="max-w-2xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-8">自動引き落とし設定のご案内</h1>
           
           <div className="bg-blue-50 p-6 rounded-lg mb-8">
-            <h2 className="text-xl font-bold mb-2">自動引き落とし設定</h2>
+            <h2 className="text-xl font-bold mb-4">2年目以降の自動引き落としについて</h2>
             <p className="text-gray-700 mb-4">
-              初回請求書のお支払い完了後は、2年目以降の年間利用料（¥19,000）は
-              登録されたカードから自動的に引き落とされます。
+              初回請求書（¥48,000）のお支払い完了後、<br />
+              2年目以降の年間利用料（¥19,000）は以下の方法で自動請求されます：
             </p>
-            <div className="bg-white p-4 rounded border-l-4 border-green-500">
-              <p className="text-sm text-green-800">
-                ✅ 毎年、正式な請求書と領収書を発行<br />
-                ✅ 支払い忘れの心配なし<br />
-                ✅ いつでもキャンセル可能
-              </p>
+            
+            <div className="bg-white p-4 rounded border-l-4 border-blue-500 text-left">
+              <h3 className="font-bold mb-2">📋 自動請求の流れ</h3>
+              <ol className="text-sm space-y-1">
+                <li>1. 毎年、正式な請求書をメールで送信</li>
+                <li>2. 請求書に記載の支払い方法で決済</li>
+                <li>3. 支払い完了後、領収書を自動発行</li>
+              </ol>
             </div>
           </div>
 
-          {!setupComplete ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="bg-white p-6 rounded-lg border">
-                <h3 className="text-lg font-semibold mb-4">クレジットカード情報</h3>
-                {elements && (
-                  <div id="payment-element">
-                    {/* Stripe Elements will be inserted here */}
-                  </div>
-                )}
-              </div>
-              
-              <button
-                type="submit"
-                disabled={!stripe || !elements}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
-              >
-                支払い方法を登録
-              </button>
-              
-              <p className="text-sm text-gray-500 text-center">
-                カード情報は暗号化されて安全に保存されます。<br />
-                初回請求書のお支払いが完了するまで課金は発生しません。
-              </p>
-            </form>
-          ) : (
-            <div className="text-center">
-              <div className="bg-green-50 p-8 rounded-lg">
-                <div className="text-green-600 text-6xl mb-4">✅</div>
-                <h2 className="text-2xl font-bold text-green-800 mb-4">
-                  支払い方法の設定が完了しました
-                </h2>
-                <p className="text-green-700">
-                  初回請求書のお支払い完了後、自動引き落としが開始されます。
-                </p>
-              </div>
-            </div>
-          )}
+          <div className="bg-green-50 p-6 rounded-lg mb-8">
+            <h3 className="text-lg font-bold text-green-800 mb-2">✅ 現在の状況</h3>
+            <p className="text-green-700">
+              サブスクリプションの設定が完了しました。<br />
+              初回請求書のお支払い後、自動請求が開始されます。
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <button
+              onClick={() => window.location.href = '/form'}
+              className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition-colors"
+            >
+              申し込み手続きに戻る
+            </button>
+            
+            <p className="text-sm text-gray-500">
+              ご不明な点がございましたら、お気軽にお問い合わせください。
+            </p>
+          </div>
         </div>
       </main>
       <Footer />
