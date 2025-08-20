@@ -23,11 +23,11 @@ export default function HeroSection() {
           >
             <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-custom ring-1 ring-blue-100 px-3 py-1.5 mb-4 shadow-soft">
               <Sparkles className="text-blue-600" size={16} />
-              <span className="text-sm font-medium text-blue-700">1分でかんたんに開始できます</span>
+              <span className="text-sm font-medium text-blue-700">10分でかんたんに開始できます</span>
             </div>
 
             <h1 className="heading-xl text-gray-900 mb-4">
-              0円から
+              貴社専用の
               <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">AIチャット</span>
               で
               <br className="hidden md:block" />
@@ -55,22 +55,22 @@ export default function HeroSection() {
             </div>
             <div className="mt-3 text-sm text-gray-600 flex items-center gap-2 justify-center lg:justify-start">
               <ShieldCheck className="text-blue-600" size={18} />
-              <span>無料で試せる・契約不要／モバイル完全対応</span>
+              <span>無料の導入サポート付き</span>
             </div>
 
             {/* 特徴（チェックリスト） */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="text-blue-600" size={20} />
-                <span className="text-gray-700 text-sm">24時間365日 自動応答</span>
+                <span className="text-gray-700 text-sm">24時間365日 即時応答</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="text-blue-600" size={20} />
-                <span className="text-gray-700 text-sm">よくある質問に即時回答</span>
+                <span className="text-gray-700 text-sm">だれでも簡単に導入可能</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="text-blue-600" size={20} />
-                <span className="text-gray-700 text-sm">CV導線に自然に誘導</span>
+                <span className="text-gray-700 text-sm">デザインカスタマイズ可能</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="text-blue-600" size={20} />
