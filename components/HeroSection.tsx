@@ -108,7 +108,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.15 }}
                 className="card p-4 md:p-6 text-center bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xl md:text-2xl font-bold leading-tight">24時間365日<br/>即時応答</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">24時間365日 即時応答</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -116,13 +116,13 @@ export default function HeroSection() {
                 transition={{ delay: 0.25 }}
                 className="card p-4 md:p-6 text-center bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xl md:text-2xl font-bold leading-tight">無料の<br/>導入サポート</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">無料の導入サポート</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="card p-4 md:p-6 text-center col-span-1 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
+                className="card p-4 md:p-6 text-center col-span-2 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
                 <p className="text-xl md:text-2xl font-bold leading-tight">最短2日で実装</p>
               </motion.div>
