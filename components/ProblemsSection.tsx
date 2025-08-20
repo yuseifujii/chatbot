@@ -49,25 +49,26 @@ export default function ProblemsSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-8">
+        {/* コンパクトなリスト型デザイン */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-2 md:gap-y-3">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="flex items-start gap-3 md:gap-4 py-2.5 md:py-3 border-b border-gray-200/70 last:border-b-0"
             >
-              <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${problem.color} flex items-center justify-center mb-5 md:mb-6`}>
-                <problem.icon className="text-white" size={28} />
+              <div className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-r ${problem.color} text-white grid place-items-center`}>
+                <problem.icon size={18} />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
-                {problem.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                {problem.description}
-              </p>
+              <div className="min-w-0">
+                <p className="text-sm md:text-base font-semibold text-gray-900">{problem.title}</p>
+                <p className="text-[12px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">
+                  {problem.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
