@@ -11,7 +11,7 @@ declare global {
 const pricingPlans = [
   {
     title: "導入初期費用",
-    price: "¥29,000",
+    price: "29,000",
     unit: "円",
     description: "カスタムChatBOT開発費用",
     features: [
@@ -26,7 +26,7 @@ const pricingPlans = [
   },
   {
     title: "サービス維持費",
-    price: "¥19,000",
+    price: "19,000",
     unit: "円/年",
     description: "年額利用料",
     features: [
