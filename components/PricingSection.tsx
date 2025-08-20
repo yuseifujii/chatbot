@@ -28,7 +28,7 @@ const pricingPlans = [
     title: "サービス維持費",
     price: "¥19,000",
     unit: "円/年",
-    description: "月額利用料",
+    description: "年額利用料",
     features: [
       "24時間365日稼働",
       "定期的なAI性能アップデート",
@@ -133,7 +133,7 @@ export default function PricingSection() {
                   <span>¥19,000</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>導入サポート/追加変更（オプション）</span>
+                  <span>導入サポート/追加変更</span>
                   <span>無料</span>
                 </div>
                 <div className="border-t pt-2 mt-2">

@@ -12,14 +12,14 @@ const problems = [
   },
   {
     icon: UserX,
-    title: "スタッフ不足でFAQ対応が大変",
+    title: "電話での質問対応が大変",
     description: "同じような質問に何度も答えるのに時間を取られていませんか？",
     color: "from-amber-500 to-orange-500"
   },
   {
     icon: ClipboardList,
-    title: "メニュー案内の手間",
-    description: "商品やサービスの説明を手作業で繰り返し対応するのは非効率的です",
+    title: "商品やサービスの説明が難しい",
+    description: "サイトに情報量が多く、お客様がすぐに必要な情報に辿り着けず、離脱してしまうことがありませんか？",
     color: "from-yellow-500 to-amber-500"
   }
 ]
