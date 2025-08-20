@@ -16,7 +16,7 @@ export default function HeroSection() {
             className="text-center lg:text-left"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              AIが自動で
+              AIが自動で<br />
               <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                 お客様対応！
               </span>
