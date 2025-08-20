@@ -20,17 +20,12 @@ export default function HeroSection() {
             className="object-cover hidden md:block object-[75%_50%]"
             sizes="(max-width: 768px) 0px, 100vw"
           />
-          {/* モバイル（人物が中央寄りで見切れにくい） */}
-          <Image
-            src="/hero-human-mobile.jpg"
-            alt="ローカルビジネスの温かい雰囲気の背景（モバイル用）"
-            fill
-            priority
-            className="object-cover md:hidden object-center"
-            sizes="100vw"
-          />
-          {/* オーバーレイ（読みやすさ向上・温かみのトーン） */}
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/50 via-amber-800/35 to-black/25" />
+          {/* モバイルは人物なしのグラデーション背景 */}
+          <div className="absolute inset-0 md:hidden bg-gradient-to-br from-slate-900 via-blue-900/70 to-slate-800" />
+          {/* デスクトップ向けクールトーンのオーバーレイ */}
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/40 via-slate-900/25 to-black/20" />
+          {/* 左側の可読性向上レイヤー（強ブラー） */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-[78%] md:w-[55%] hidden md:block bg-gradient-to-r from-black/45 via-black/30 to-transparent backdrop-blur-2xl" />
         </div>
       </div>
 
@@ -48,7 +43,7 @@ export default function HeroSection() {
               <span className="text-sm font-medium text-blue-800">10分でかんたんに開始できます</span>
             </div>
 
-            <h1 className="text-[30px] sm:text-[32px] leading-tight tracking-[-0.01em] font-extrabold md:heading-5xl md:leading-[1.1] md:tracking-[-0.015em] text-white drop-shadow mb-3 md:mb-4">
+            <h1 className="text-[32px] sm:text-[36px] md:text-5xl lg:text-6xl xl:text-7xl leading-tight md:leading-[1.1] tracking-[-0.01em] md:tracking-[-0.02em] font-extrabold text-white drop-shadow mb-3 md:mb-4">
               貴社専用の
               <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">AIチャット</span>
               で
