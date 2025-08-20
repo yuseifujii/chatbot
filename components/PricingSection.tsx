@@ -13,7 +13,7 @@ declare global {
 const pricingPlans = [
   {
     title: "導入初期費用",
-    price: "29,000",
+    price: "¥29,000",
     unit: "円",
     description: "カスタムChatBOT開発費用",
     features: [
@@ -28,7 +28,7 @@ const pricingPlans = [
   },
   {
     title: "サービス維持費",
-    price: "19,000",
+    price: "¥19,000",
     unit: "円/年",
     description: "月額利用料",
     features: [
@@ -103,7 +103,7 @@ export default function PricingSection() {
                 <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
                 <p className="text-sm opacity-90 mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
-                  <span className="text-4xl font-bold">¥{plan.price}</span>
+                  <span className="text-4xl font-bold">{plan.price}</span>
                   <span className="ml-2 text-lg opacity-90">{plan.unit}</span>
                 </div>
                 {plan.isOneTime && (
