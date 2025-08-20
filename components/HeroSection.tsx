@@ -54,7 +54,7 @@ export default function HeroSection() {
 
             <h1 className="text-[32px] sm:text-[36px] md:text-5xl lg:text-6xl xl:text-7xl leading-tight md:leading-[1.1] tracking-[-0.01em] md:tracking-[-0.02em] font-extrabold text-white drop-shadow mb-3 md:mb-4">
               貴社専用の
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-200 to-yellow-200 bg-clip-text text-transparent font-black drop-shadow-lg">AIチャット</span>
+              <span className="bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent font-black drop-shadow-lg">AIチャット</span>
               で
               <br className="hidden md:block" />
               顧客対応を効率化
@@ -100,34 +100,31 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* 実績（KPIカード） - より印象的なデザイン */}
+            {/* 実績（KPIカード） - シンプルで落ち着いたデザイン */}
             <div className="mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
-                className="card p-4 md:p-5 text-center bg-gradient-to-br from-blue-500/90 to-cyan-500/90 backdrop-blur-custom text-white shadow-lg"
+                className="card p-4 md:p-6 text-center bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xs md:text-sm font-medium mb-1">サービス対応</p>
-                <p className="text-lg md:text-xl font-bold">24時間365日<br/>即時応答</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">24時間365日<br/>即時応答</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="card p-4 md:p-5 text-center bg-gradient-to-br from-green-500/90 to-emerald-500/90 backdrop-blur-custom text-white shadow-lg"
+                className="card p-4 md:p-6 text-center bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xs md:text-sm font-medium mb-1">導入サポート</p>
-                <p className="text-lg md:text-xl font-bold">無料の<br/>導入サポート</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">無料の<br/>導入サポート</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="card p-4 md:p-5 text-center col-span-2 sm:col-span-1 bg-gradient-to-br from-purple-500/90 to-pink-500/90 backdrop-blur-custom text-white shadow-lg"
+                className="card p-4 md:p-6 text-center col-span-2 sm:col-span-1 bg-white/85 backdrop-blur-custom text-slate-800 shadow-lg"
               >
-                <p className="text-xs md:text-sm font-medium mb-1">導入の簡単さ</p>
-                <p className="text-lg md:text-xl font-bold">だれでも簡単に<br/>導入可能</p>
+                <p className="text-xl md:text-2xl font-bold leading-tight">だれでも簡単に<br/>導入可能</p>
               </motion.div>
             </div>
           </motion.div>
