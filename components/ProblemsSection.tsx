@@ -26,30 +26,30 @@ const problems = [
 
 export default function ProblemsSection() {
   return (
-    <section id="problems" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="problems" className="py-16 md:py-20 bg-gray-50">
+      <div className="container mx-auto px-3 md:px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-red-100 text-red-600 px-3 py-1.5 rounded-full mb-3 md:mb-4">
             <AlertCircle size={20} />
             <span className="font-medium">こんなお悩みありませんか？</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
             お客様対応の
             <span className="text-red-500">課題</span>
             を解決
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             多くの企業が抱える顧客対応の問題を、AIチャットボットが解決します
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
@@ -57,15 +57,15 @@ export default function ProblemsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${problem.color} flex items-center justify-center mb-6`}>
-                <problem.icon className="text-white" size={32} />
+              <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${problem.color} flex items-center justify-center mb-5 md:mb-6`}>
+                <problem.icon className="text-white" size={28} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">
                 {problem.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                 {problem.description}
               </p>
             </motion.div>
@@ -77,17 +77,17 @@ export default function ProblemsSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center"
+          className="mt-10 md:mt-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white text-center"
         >
-          <h3 className="text-2xl font-bold mb-4">
+          <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
             これらの課題を全て解決！
           </h3>
-          <p className="text-lg mb-6">
+          <p className="text-base md:text-lg mb-5 md:mb-6">
             AIチャットボットなら24時間365日、即座に正確な対応が可能です
           </p>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-            className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="bg-white text-blue-600 px-6 py-2.5 md:px-8 md:py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
           >
             解決策を見る →
           </button>

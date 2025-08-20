@@ -38,11 +38,11 @@ export default function Header() {
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
       isScrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
     )}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-3 md:px-4">
+        <div className="flex items-center justify-between h-14 md:h-16">
           {/* ロゴ */}
           <div className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
               トレモックChatBot
             </span>
           </div>
@@ -88,13 +88,13 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                  className="px-3 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
                 >
                   {item.label}
                 </a>
               ))}
               <Link href="/form" passHref>
-                <button className="mx-4 mt-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
+                <button className="mx-3 mt-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
                   お申し込み
                 </button>
               </Link>

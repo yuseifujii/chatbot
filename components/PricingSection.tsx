@@ -58,29 +58,29 @@ const pricingPlans = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="pricing" className="py-16 md:py-20 bg-gray-50">
+      <div className="container mx-auto px-3 md:px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-3 py-1.5 rounded-full mb-3 md:mb-4">
             <TrendingUp size={20} />
             <span className="font-medium">料金プラン</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
             シンプルで
             <span className="text-green-600">明確な料金体系</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             初期費用と月額費用のみ。隠れた費用は一切ありません
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
@@ -89,7 +89,7 @@ export default function PricingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-                plan.isPopular ? 'ring-2 ring-blue-600 transform scale-105' : ''
+                plan.isPopular ? 'ring-2 ring-blue-600 md:transform md:scale-105' : ''
               }`}
             >
               {plan.isPopular && (
@@ -99,27 +99,27 @@ export default function PricingSection() {
                 </div>
               )}
               
-              <div className={`bg-gradient-to-r ${plan.color} p-6 text-white`}>
-                <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
-                <p className="text-sm opacity-90 mb-4">{plan.description}</p>
+              <div className={`bg-gradient-to-r ${plan.color} p-5 md:p-6 text-white`}>
+                <h3 className="text-lg md:text-xl font-bold mb-1.5 md:mb-2">{plan.title}</h3>
+                <p className="text-xs md:text-sm opacity-90 mb-3 md:mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="ml-2 text-lg opacity-90">{plan.unit}</span>
+                  <span className="text-3xl md:text-4xl font-bold">{plan.price}</span>
+                  <span className="ml-2 text-base md:text-lg opacity-90">{plan.unit}</span>
                 </div>
                 {plan.isOneTime && (
-                  <p className="text-sm mt-2 opacity-90">※ 一度だけのお支払い</p>
+                  <p className="text-xs md:text-sm mt-2 opacity-90">※ 一度だけのお支払い</p>
                 )}
                 {plan.isOptional && (
-                  <p className="text-sm mt-2 opacity-90">※ 必要に応じて選択</p>
+                  <p className="text-xs md:text-sm mt-2 opacity-90">※ 必要に応じて選択</p>
                 )}
               </div>
 
-              <div className="p-6">
-                <ul className="space-y-3">
+              <div className="p-5 md:p-6">
+                <ul className="space-y-2.5 md:space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <Check className="text-green-500 mr-2 mt-0.5 flex-shrink-0" size={20} />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                      <Check className="text-green-500 mr-2 mt-0.5 flex-shrink-0" size={18} />
+                      <span className="text-gray-700 text-[13px] md:text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -134,11 +134,11 @@ export default function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white"
+          className="mt-10 md:mt-12 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white"
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                 初年度のお支払い例
               </h3>
               <div className="space-y-2">
@@ -155,7 +155,7 @@ export default function PricingSection() {
                   <span>無料</span>
                 </div>
                 <div className="border-t pt-2 mt-2">
-                  <div className="flex justify-between font-bold text-lg">
+                  <div className="flex justify-between font-bold text-base md:text-lg">
                     <span>合計</span>
                     <span>¥48,000</span>
                   </div>
@@ -163,17 +163,17 @@ export default function PricingSection() {
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                 2年目以降
               </h3>
-              <p className="text-3xl font-bold mb-2">
+              <p className="text-2xl md:text-3xl font-bold mb-2">
                 年額 ¥19,000 のみ
               </p>
               <p className="text-sm opacity-90">
                 ※ 追加費用は一切かかりません
               </p>
               <Link href="/form" passHref>
-                <button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                <button className="mt-4 bg-white text-blue-600 px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                   お申し込みはこちら
                 </button>
               </Link>
