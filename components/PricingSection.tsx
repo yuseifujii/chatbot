@@ -52,7 +52,6 @@ const pricingPlans = [
       "AIの知識の追加変更"
     ],
     isOptional: true,
-    isPopular: true,
     color: "from-green-600 to-green-700"
   }
 ]
