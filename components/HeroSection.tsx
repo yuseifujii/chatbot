@@ -128,23 +128,15 @@ export default function HeroSection() {
                   priority
                 />
               </div>
-              {/* 浮遊するインフォバッジ */}
-              <motion.div
-                animate={{ y: [0, -10, 0], rotate: [0, 3, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 border border-blue-100"
-              >
+              {/* インフォバッジ（静的） */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 border border-blue-100">
                 <p className="text-[11px] font-semibold text-gray-800">自動要約・会話履歴</p>
                 <p className="text-xl font-bold text-blue-600">すぐ共有</p>
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-6 left-6 bg-white rounded-2xl shadow-lg p-3 border border-blue-100 flex items-center gap-2"
-              >
+              </div>
+              <div className="absolute -bottom-6 left-6 bg-white rounded-2xl shadow-lg p-3 border border-blue-100 flex items-center gap-2">
                 <MessageSquare className="text-blue-600" size={18} />
                 <span className="text-xs text-gray-700">即時回答で離脱を防止</span>
-              </motion.div>
+              </div>
             </div>
 
             {/* 背景の角度付きグラデーション */}
