@@ -20,14 +20,14 @@ export default function HeroSection() {
             className="object-cover hidden md:block object-[75%_50%]"
             sizes="(max-width: 768px) 0px, 100vw"
           />
-          {/* モバイルは人物なしのリッチな多層グラデーション背景 */}
-          <div className="absolute inset-0 md:hidden [background-image:radial-gradient(1200px_600px_at_0%_0%,rgba(56,189,248,0.18),transparent_60%),radial-gradient(900px_500px_at_100%_20%,rgba(99,102,241,0.22),transparent_60%),linear-gradient(135deg,#0b1220_0%,#0f1f3a_50%,#0a172a_100%)] [background-size:100%_100%,100%_100%,100%_100%] [background-repeat:no-repeat]" />
+          {/* モバイルは人物なしのポジティブで明るい多層グラデーション背景 */}
+          <div className="absolute inset-0 md:hidden [background-image:radial-gradient(1400px_700px_at_10%_10%,rgba(34,197,94,0.12),transparent_65%),radial-gradient(1000px_600px_at_90%_30%,rgba(59,130,246,0.15),transparent_70%),radial-gradient(800px_400px_at_50%_80%,rgba(168,85,247,0.08),transparent_60%),linear-gradient(135deg,#1e3a8a_0%,#1d4ed8_40%,#2563eb_100%)] [background-size:100%_100%,100%_100%,100%_100%,100%_100%] [background-repeat:no-repeat]" />
           {/* モバイル質感オーバーレイ（微細ドット） */}
-          <div className="absolute inset-0 md:hidden pointer-events-none [background-image:radial-gradient(rgba(255,255,255,0.05)_0.5px,transparent_0.5px)] [background-size:10px_10px] opacity-10 mix-blend-overlay" />
+          <div className="absolute inset-0 md:hidden pointer-events-none [background-image:radial-gradient(rgba(255,255,255,0.08)_0.5px,transparent_0.5px)] [background-size:12px_12px] opacity-15 mix-blend-overlay" />
           {/* デスクトップ向けクールトーンのオーバーレイ */}
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/40 via-slate-900/25 to-slate-900/15" />
-          {/* 左側の可読性向上レイヤー（ブラー控えめ＋フェザー） */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:block w-[70%] lg:w-[55%] bg-gradient-to-r from-black/40 via-black/20 to-transparent backdrop-blur-md shadow-[inset_80px_0_120px_rgba(0,0,0,0.35)]" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/35 via-slate-900/20 to-slate-900/10" />
+          {/* 左側の可読性向上レイヤー（ブラー最小＋ソフトフェザー） */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:block w-[75%] lg:w-[60%] bg-gradient-to-r from-black/30 via-black/15 via-black/8 to-transparent backdrop-blur-sm" />
         </div>
       </div>
 
