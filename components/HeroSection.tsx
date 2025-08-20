@@ -26,7 +26,7 @@ export default function HeroSection() {
               <span className="text-sm font-medium text-blue-700">10分でかんたんに開始できます</span>
             </div>
 
-            <h1 className="text-[28px] leading-tight md:heading-xl text-gray-900 mb-3 md:mb-4">
+            <h1 className="text-[30px] sm:text-[32px] leading-tight tracking-[-0.01em] font-extrabold md:heading-2xl md:leading-[1.1] md:tracking-[-0.015em] text-gray-900 mb-3 md:mb-4">
               貴社専用の
               <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">AIチャット</span>
               で
