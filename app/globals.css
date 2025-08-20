@@ -97,6 +97,19 @@ html {
   @apply hover:bg-blue-50 transition-all duration-300;
 }
 
+/* モバイル専用ボタンスタイル（背景画像との視認性を向上） */
+.btn-primary-mobile {
+  @apply bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold;
+  @apply hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  @apply shadow-lg ring-2 ring-white/20;
+}
+
+.btn-secondary-mobile {
+  @apply bg-white/95 backdrop-blur-sm border-2 border-white text-slate-800 px-6 py-3 rounded-full font-semibold;
+  @apply hover:bg-white hover:shadow-lg transition-all duration-300;
+  @apply shadow-md ring-1 ring-white/30;
+}
+
 /* カードエフェクト */
 .card {
   @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300;

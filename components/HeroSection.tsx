@@ -20,14 +20,21 @@ export default function HeroSection() {
             className="object-cover hidden md:block object-[75%_50%]"
             sizes="(max-width: 768px) 0px, 100vw"
           />
-          {/* モバイルは人物なしのポジティブで明るい多層グラデーション背景 */}
-          <div className="absolute inset-0 md:hidden [background-image:radial-gradient(1400px_700px_at_10%_10%,rgba(34,197,94,0.12),transparent_65%),radial-gradient(1000px_600px_at_90%_30%,rgba(59,130,246,0.15),transparent_70%),radial-gradient(800px_400px_at_50%_80%,rgba(168,85,247,0.08),transparent_60%),linear-gradient(135deg,#1e3a8a_0%,#1d4ed8_40%,#2563eb_100%)] [background-size:100%_100%,100%_100%,100%_100%,100%_100%] [background-repeat:no-repeat]" />
-          {/* モバイル質感オーバーレイ（微細ドット） */}
-          <div className="absolute inset-0 md:hidden pointer-events-none [background-image:radial-gradient(rgba(255,255,255,0.08)_0.5px,transparent_0.5px)] [background-size:12px_12px] opacity-15 mix-blend-overlay" />
+          {/* モバイル用背景画像（hero-human-desktopの左側領域を切り取った画像） */}
+          <Image
+            src="/hero-mobile.jpg"
+            alt="モバイル用背景画像"
+            fill
+            priority
+            className="object-cover md:hidden object-center"
+            sizes="(max-width: 768px) 100vw, 0px"
+          />
           {/* デスクトップ向けクールトーンのオーバーレイ */}
           <div className="absolute inset-0 hidden md:block bg-gradient-to-br from-blue-900/35 via-slate-900/20 to-slate-900/10" />
-          {/* 左側の可読性向上レイヤー（ブラー最小＋ソフトフェザー） */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:block w-[75%] lg:w-[60%] bg-gradient-to-r from-black/30 via-black/15 via-black/8 to-transparent backdrop-blur-sm" />
+          {/* モバイル向けオーバーレイ（背景画像の上に適用） */}
+          <div className="absolute inset-0 md:hidden bg-gradient-to-br from-blue-900/40 via-slate-900/25 to-slate-900/15" />
+          {/* デスクトップ：左側の可読性向上レイヤー（より自然なブラーグラデーション） */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:block w-[75%] lg:w-[60%] bg-gradient-to-r from-black/35 via-black/20 via-black/12 via-black/6 to-transparent backdrop-blur-[2px]" />
         </div>
       </div>
 
@@ -60,14 +67,14 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6 md:mt-8 justify-center lg:justify-start">
               <Link href="/form" passHref>
-                <button aria-label="今すぐ導入" className="btn-primary px-6 py-3 text-base md:px-8 md:py-4 md:text-lg rounded-full">
+                <button aria-label="今すぐ導入" className="btn-primary-mobile md:btn-primary px-6 py-3 text-base md:px-8 md:py-4 md:text-lg rounded-full">
                   今すぐ導入
                 </button>
               </Link>
               <button
                 aria-label="デモを体験"
                 onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-                className="btn-secondary px-6 py-3 text-base md:px-8 md:py-4 md:text-lg rounded-full"
+                className="btn-secondary-mobile md:btn-secondary px-6 py-3 text-base md:px-8 md:py-4 md:text-lg rounded-full"
               >
                 デモを体験
               </button>
