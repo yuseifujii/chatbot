@@ -17,12 +17,12 @@ const Footer = () => {
           
           <div className="grid grid-cols-2 gap-6 md:gap-8">
             <div>
-              <h4 className="font-semibold mb-3 md:mb-4">会社情報</h4>
+              <h4 className="font-semibold mb-3 md:mb-4">法的情報</h4>
               <ul className="space-y-2 text-gray-400 text-[13px] md:text-sm">
                 <li><a href="https://toremock.com/info/ja" className="hover:text-white transition-colors">会社概要</a></li>
-                <li><a href="https://toremock.com/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a></li>
-                <li><a href="https://toremock.com/terms" className="hover:text-white transition-colors">利用規約</a></li>
-                <li><a href="https://toremock.com/legal" className="hover:text-white transition-colors">特定商取引法</a></li>
+                <li><a href="/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a></li>
+                <li><a href="/terms" className="hover:text-white transition-colors">利用規約</a></li>
+                <li><a href="/legal" className="hover:text-white transition-colors">特定商取引法</a></li>
               </ul>
             </div>
             
@@ -31,8 +31,6 @@ const Footer = () => {
               <ul className="space-y-2 text-gray-400 text-[13px] md:text-sm">
                 <li>合同会社ToreMock</li>
                 <li>info@toremock.com</li>
-                <li>千葉県船橋市薬園台六丁目八番二号</li>
-                <li>平日 9:00-18:00</li>
               </ul>
             </div>
           </div>
