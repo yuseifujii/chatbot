@@ -1,6 +1,6 @@
 // Firebase設定とユーティリティ
 import { initializeApp, getApps } from 'firebase/app'
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -17,13 +17,6 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0
 // Firestoreインスタンス
 export const db = getFirestore(app)
 
-// 開発環境でエミュレーターに接続（オプション）
-if (process.env.NODE_ENV === 'development' && process.env.USE_FIREBASE_EMULATOR === 'true') {
-  try {
-    connectFirestoreEmulator(db, 'localhost', 8080)
-  } catch (error) {
-    console.log('Firestore emulator already connected')
-  }
-}
+// 本番環境でのFirestore設定
 
 export default app
