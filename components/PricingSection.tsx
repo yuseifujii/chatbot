@@ -15,11 +15,10 @@ const pricingPlans = [
     unit: "円",
     description: "カスタムChatBOT開発費用",
     features: [
-      "貴社専用AIチャットボット開発",
-      "初期データ学習・設定",
+      "カスタムAIチャットボット開発",
+      "貴社専用のデータ学習・設定",
       "デザインカスタマイズ",
-      "動作テスト・調整",
-      "導入後1ヶ月サポート"
+      "最短2日で開発完了"
     ],
     isOneTime: true,
     color: "from-blue-600 to-blue-700"
@@ -32,8 +31,8 @@ const pricingPlans = [
     features: [
       "24時間365日稼働",
       "定期的なAI性能アップデート",
-      "データバックアップ",
-      "技術サポート"
+      "チャット履歴データの共有",
+      "安全なデータ管理"
     ],
     isPopular: false,
     color: "from-blue-600 to-blue-700"
@@ -44,10 +43,10 @@ const pricingPlans = [
     unit: "",
     description: "オプションサービス",
     features: [
-      "設置作業代行",
-      "スタッフ向け使い方講習",
-      "カスタマイズ相談",
-      "AIの知識の追加変更"
+      "1行のコードで導入可能",
+      "導入サポート(Zoom等にてサポート)",
+      "チャットボットの知識内容の追加変更",
+      "チャットボットのデザインの変更"
     ],
     isOptional: true,
     color: "from-green-600 to-green-700"

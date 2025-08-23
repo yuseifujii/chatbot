@@ -42,9 +42,9 @@ export default function FormPage() {
         </div>
 
         {!paymentCompleted ? (
-          /* ①お支払いセクション */
+          /* お支払いセクション */
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">①お支払い</h2>
+            <h2 className="text-3xl font-bold mb-4">お支払い</h2>
             <p className="text-gray-600 mb-8">
               まず最初にお支払い手続きを完了してください。<br />
               お支払い完了後、情報入力フォームが表示されます。
@@ -68,10 +68,10 @@ export default function FormPage() {
             </p>
           </div>
         ) : (
-          /* ②情報入力セクション */
+          /* 情報入力セクション */
           <div>
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">②情報入力</h2>
+              <h2 className="text-3xl font-bold mb-4">情報入力</h2>
               <div className="bg-green-50 p-4 rounded-lg inline-block mb-4">
                 <p className="text-green-700 font-semibold">
                   ✅ お支払いが完了しました！
