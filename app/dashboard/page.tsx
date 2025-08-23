@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 interface ChatMessage {
   id: string
@@ -41,6 +41,7 @@ function DashboardContent() {
   })
 
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   useEffect(() => {
     const urlStoreId = searchParams.get('storeId')
@@ -48,6 +49,11 @@ function DashboardContent() {
       setStoreId(urlStoreId)
     }
   }, [searchParams])
+
+  const handleLogout = () => {
+    setAuthenticated(false)
+    router.push('/')
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -210,7 +216,7 @@ function DashboardContent() {
               <p className="text-sm text-gray-500">店舗ID: {storeId}</p>
             </div>
             <button
-              onClick={() => setAuthenticated(false)}
+              onClick={handleLogout}
               className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium text-gray-700"
             >
               ログアウト

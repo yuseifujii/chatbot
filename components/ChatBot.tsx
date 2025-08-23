@@ -34,6 +34,49 @@ export default function ChatBot() {
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  
+  // セッション管理と会話履歴
+  const [sessionId, setSessionId] = useState<string>('')
+  const [conversationHistory, setConversationHistory] = useState<Array<{user: string, bot: string, timestamp: string}>>([])
+
+  const generateSessionId = () => {
+    return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+  }
+
+  const addToHistory = (userMessage: string, botResponse: string) => {
+    const newEntry = {
+      user: userMessage,
+      bot: botResponse,
+      timestamp: new Date().toISOString()
+    };
+    
+    setConversationHistory(prev => {
+      const updated = [...prev, newEntry];
+      // 最大20件の会話を保持
+      const limited = updated.slice(-20);
+      
+      // セッションストレージに保存
+      try {
+        sessionStorage.setItem(`chatbot_history_demo`, JSON.stringify(limited));
+      } catch (e) {
+        console.warn('Failed to save conversation history:', e);
+      }
+      
+      return limited;
+    });
+  }
+
+  const loadHistoryFromStorage = () => {
+    try {
+      const stored = sessionStorage.getItem(`chatbot_history_demo`);
+      if (stored) {
+        setConversationHistory(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.warn('Failed to load conversation history:', e);
+      setConversationHistory([]);
+    }
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -44,6 +87,14 @@ export default function ChatBot() {
   }, [messages])
 
   useEffect(() => {
+    // セッションIDの初期化
+    const storedSessionId = localStorage.getItem('chatbot_session_demo') || generateSessionId();
+    setSessionId(storedSessionId);
+    localStorage.setItem('chatbot_session_demo', storedSessionId);
+    
+    // 会話履歴の読み込み
+    loadHistoryFromStorage();
+    
     // 店舗設定を取得
     const fetchStoreConfig = async () => {
       try {
@@ -115,7 +166,8 @@ export default function ChatBot() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           message: inputText,
-          storeId: 'demo' // デモ用のストアID
+          storeId: 'demo', // デモ用のストアID
+          sessionId: sessionId // セッションIDを送信
         })
       })
 
@@ -128,14 +180,18 @@ export default function ChatBot() {
       const data = await response.json()
       console.log('API Response Data:', data)
       
+      const botResponseText = data.response || data.error || 'エラーが発生しました。';
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || data.error || 'エラーが発生しました。',
+        text: botResponseText,
         sender: 'bot',
         timestamp: new Date()
       }
 
       setMessages(prev => [...prev, botMessage])
+      
+      // 会話履歴に追加
+      addToHistory(inputText, botResponseText)
     } catch (error) {
       console.error('Chat API Error:', error)
       // エラー時のフォールバック

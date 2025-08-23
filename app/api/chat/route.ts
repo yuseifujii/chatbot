@@ -98,6 +98,29 @@ export async function POST(request: NextRequest) {
     const { message, storeId, sessionId } = await request.json()
     console.log('Received request:', { message, storeId, sessionId })
 
+    // セッションIDが提供されている場合、過去の会話履歴を取得
+    let conversationHistory: Array<{role: 'user' | 'assistant', content: string}> = []
+    if (sessionId) {
+      try {
+        const historyQuery = adminDb().collection('conversations')
+          .where('sessionId', '==', sessionId)
+          .orderBy('timestamp', 'asc')
+          .limit(10) // 最新10件の会話履歴
+
+        const historySnapshot = await historyQuery.get()
+        conversationHistory = historySnapshot.docs.map((doc: any) => {
+          const data = doc.data()
+          return [
+            { role: 'user' as const, content: data.userMessage },
+            { role: 'assistant' as const, content: data.botResponse }
+          ]
+        }).flat()
+      } catch (error) {
+        console.error('会話履歴取得エラー:', error)
+        // エラーがあっても処理を続行
+      }
+    }
+
     // store-config.jsonからストアデータを取得
     const storeData = storeConfig.stores[storeId as keyof typeof storeConfig.stores] || storeConfig.stores['demo']
     console.log('Store data found:', !!storeData)
@@ -136,11 +159,20 @@ ${storeData.faq.map((item, index) => `
 4. ${storeData.customSettings.welcomeMessage}のトーンを維持してください
 `
 
+      // 会話履歴とシステムプロンプト、現在のメッセージを組み合わせ
+      const messages = [
+        { role: 'system' as const, content: systemPrompt },
+        ...conversationHistory,
+        { role: 'user' as const, content: message }
+      ]
+
+      console.log('Sending to OpenAI:', { 
+        messageCount: messages.length, 
+        hasHistory: conversationHistory.length > 0 
+      })
+
       const completion = await openai.chat.completions.create({
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: message }
-        ],
+        messages,
         model: 'gpt-5-nano-2025-08-07',
         temperature: 1.0,
         max_completion_tokens: 2000,

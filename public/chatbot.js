@@ -23,8 +23,44 @@
   let sessionId = localStorage.getItem(`chatbot_session_${storeId}`) || generateSessionId();
   localStorage.setItem(`chatbot_session_${storeId}`, sessionId);
   
+  // 会話履歴管理
+  let conversationHistory = [];
+  const MAX_HISTORY_LENGTH = 20; // 最大20件の会話を保持
+  
   function generateSessionId() {
     return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+  }
+  
+  function addToHistory(userMessage, botResponse) {
+    conversationHistory.push({
+      user: userMessage,
+      bot: botResponse,
+      timestamp: new Date().toISOString()
+    });
+    
+    // 履歴が長くなりすぎた場合は古いものを削除
+    if (conversationHistory.length > MAX_HISTORY_LENGTH) {
+      conversationHistory = conversationHistory.slice(-MAX_HISTORY_LENGTH);
+    }
+    
+    // セッションストレージに保存（ページリロード時に維持）
+    try {
+      sessionStorage.setItem(`chatbot_history_${storeId}`, JSON.stringify(conversationHistory));
+    } catch (e) {
+      console.warn('Failed to save conversation history to sessionStorage:', e);
+    }
+  }
+  
+  function loadHistoryFromStorage() {
+    try {
+      const stored = sessionStorage.getItem(`chatbot_history_${storeId}`);
+      if (stored) {
+        conversationHistory = JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn('Failed to load conversation history from sessionStorage:', e);
+      conversationHistory = [];
+    }
   }
   
   // デフォルト設定
@@ -382,6 +418,9 @@
     // 店舗設定を取得
     await fetchStoreConfig();
     
+    // 会話履歴を読み込み
+    loadHistoryFromStorage();
+    
     // 設定取得後にスタイルを動的生成して挿入
     const styleSheet = document.createElement('style');
     styleSheet.id = 'chatbot-dynamic-styles';
@@ -406,6 +445,11 @@
       window.classList.add('active');
       bubble.style.display = 'none';
       input.focus();
+      
+      // 初回アクセス時は新しいセッション開始
+      if (conversationHistory.length === 0) {
+        console.log('新しい会話セッション開始:', sessionId);
+      }
     });
 
     closeBtn.addEventListener('click', () => {
@@ -447,7 +491,11 @@
         hideTyping();
         
         // ボットの返答を追加
-        addMessage(data.response || 'すみません、エラーが発生しました。', 'bot');
+        const botResponse = data.response || 'すみません、エラーが発生しました。';
+        addMessage(botResponse, 'bot');
+        
+        // 会話履歴に追加
+        addToHistory(message, botResponse);
       } catch (error) {
         hideTyping();
         addMessage('接続エラーが発生しました。しばらくしてから再度お試しください。', 'bot');
