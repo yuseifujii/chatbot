@@ -35,8 +35,7 @@ export default function LegalPage() {
             <section className="bg-white border border-gray-200 rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">所在地</h2>
               <p className="text-gray-700 leading-relaxed">
-                詳細な所在地については、法令に基づき開示請求があった場合に遅滞なく開示いたします。<br />
-                お問い合わせはメールアドレスまでお願いいたします。
+                千葉県船橋市薬園台六丁目八番二号
               </p>
             </section>
 
