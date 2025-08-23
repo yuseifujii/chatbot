@@ -60,10 +60,10 @@ async function saveConversation(
     }
 
     // Firestoreに会話履歴を保存
-    await adminDb.collection('conversations').doc(messageId).set(messageData)
+    await adminDb().collection('conversations').doc(messageId).set(messageData)
 
     // セッション情報の更新または作成
-    const sessionRef = adminDb.collection('sessions').doc(currentSessionId)
+    const sessionRef = adminDb().collection('sessions').doc(currentSessionId)
     const sessionDoc = await sessionRef.get()
 
     if (sessionDoc.exists) {

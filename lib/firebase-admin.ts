@@ -1,8 +1,14 @@
 // Firebase Admin SDK設定
 import admin from 'firebase-admin'
 
-// Firebase Admin初期化（重複を防ぐ）
-if (!admin.apps.length) {
+let isInitialized = false;
+
+// Firebase Admin初期化関数
+function initializeFirebaseAdmin() {
+  if (isInitialized || admin.apps.length > 0) {
+    return;
+  }
+
   try {
     // 本番環境では環境変数からサービスアカウントキーを取得
     if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
@@ -12,6 +18,7 @@ if (!admin.apps.length) {
         projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
       })
       console.log('Firebase Admin initialized with service account')
+      isInitialized = true;
     } else {
       // フォールバック: 環境変数から直接設定
       if (process.env.FIREBASE_ADMIN_PROJECT_ID && 
@@ -26,8 +33,9 @@ if (!admin.apps.length) {
           projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
         })
         console.log('Firebase Admin initialized with individual credentials')
+        isInitialized = true;
       } else {
-        throw new Error('Firebase Admin credentials not found in environment variables')
+        console.warn('Firebase Admin credentials not found - Firebase features will be disabled in development')
       }
     }
   } catch (error) {
@@ -40,7 +48,20 @@ if (!admin.apps.length) {
   }
 }
 
-export const adminDb = admin.firestore()
+// Firestore取得関数（初期化をチェック）
+function getAdminDb() {
+  if (!isInitialized && admin.apps.length === 0) {
+    initializeFirebaseAdmin();
+  }
+  
+  if (admin.apps.length === 0) {
+    throw new Error('Firebase Admin is not initialized');
+  }
+  
+  return admin.firestore();
+}
+
+export const adminDb = getAdminDb;
 
 // 型定義
 export interface ChatMessage {

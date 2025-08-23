@@ -36,13 +36,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Firestoreに会話履歴を保存
-    await adminDb.collection('conversations').doc(messageId).set({
+    await adminDb().collection('conversations').doc(messageId).set({
       ...messageData,
       timestamp: now.toISOString(),
     })
 
     // セッション情報の更新または作成
-    const sessionRef = adminDb.collection('sessions').doc(currentSessionId)
+    const sessionRef = adminDb().collection('sessions').doc(currentSessionId)
     const sessionDoc = await sessionRef.get()
 
     if (sessionDoc.exists) {
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    let query = adminDb.collection('conversations').where('storeId', '==', storeId)
+    let query = adminDb().collection('conversations').where('storeId', '==', storeId)
 
     // セッション指定フィルター
     if (sessionId) {

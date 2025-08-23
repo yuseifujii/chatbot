@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 interface ChatMessage {
@@ -25,7 +25,7 @@ interface ChatSession {
   ipAddress?: string
 }
 
-export default function DashboardPage() {
+function DashboardContent() {
   const [authenticated, setAuthenticated] = useState(false)
   const [storeId, setStoreId] = useState('')
   const [storeName, setStoreName] = useState('')
@@ -398,5 +398,13 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   )
 }

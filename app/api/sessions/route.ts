@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    let query = adminDb.collection('sessions').where('storeId', '==', storeId)
+    let query = adminDb().collection('sessions').where('storeId', '==', storeId)
 
     // 日付範囲フィルター
     if (startDate) {
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     const sessionsWithStats = await Promise.all(
       sessions.map(async (session: any) => {
         // セッション内のメッセージ数を取得
-        const messagesSnapshot = await adminDb
+        const messagesSnapshot = await adminDb()
           .collection('conversations')
           .where('sessionId', '==', session.id)
           .get()
