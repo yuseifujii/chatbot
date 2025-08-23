@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import storeConfig from '@/stores/store-config.json'
+import { adminDb } from '@/lib/firebase-admin'
+import { v4 as uuidv4 } from 'uuid'
 
 // 顧客データの型定義
 interface StoreData {
@@ -27,10 +29,74 @@ interface StoreData {
 // OpenAI APIキーの確認（環境変数から取得）
 const openaiApiKey = process.env.OPENAI_API_KEY
 
+// 会話履歴を保存する関数
+async function saveConversation(
+  userMessage: string,
+  botResponse: string,
+  storeId: string,
+  sessionId: string | undefined,
+  request: NextRequest
+) {
+  try {
+    const now = new Date()
+    const messageId = uuidv4()
+    const currentSessionId = sessionId || uuidv4()
+
+    // IPアドレスとユーザーエージェントを取得
+    const userAgent = request.headers.get('user-agent') || undefined
+    const forwardedFor = request.headers.get('x-forwarded-for')
+    const realIp = request.headers.get('x-real-ip')
+    const ipAddress = forwardedFor?.split(',')[0] || realIp || undefined
+
+    // メッセージデータ
+    const messageData = {
+      storeId,
+      userMessage,
+      botResponse,
+      timestamp: now.toISOString(),
+      sessionId: currentSessionId,
+      userAgent,
+      ipAddress,
+    }
+
+    // Firestoreに会話履歴を保存
+    await adminDb.collection('conversations').doc(messageId).set(messageData)
+
+    // セッション情報の更新または作成
+    const sessionRef = adminDb.collection('sessions').doc(currentSessionId)
+    const sessionDoc = await sessionRef.get()
+
+    if (sessionDoc.exists) {
+      // 既存セッションの更新
+      await sessionRef.update({
+        lastActivity: now.toISOString(),
+        messageCount: (sessionDoc.data()?.messageCount || 0) + 1,
+      })
+    } else {
+      // 新しいセッションの作成
+      const sessionData = {
+        storeId,
+        startTime: now.toISOString(),
+        lastActivity: now.toISOString(),
+        messageCount: 1,
+        userAgent,
+        ipAddress,
+      }
+      
+      await sessionRef.set(sessionData)
+    }
+
+    console.log('会話履歴保存完了:', messageId)
+  } catch (error) {
+    console.error('会話履歴保存エラー:', error)
+    // エラーが発生してもチャット機能は継続
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { message, storeId } = await request.json()
-    console.log('Received request:', { message, storeId })
+    const { message, storeId, sessionId } = await request.json()
+    console.log('Received request:', { message, storeId, sessionId })
 
     // store-config.jsonからストアデータを取得
     const storeData = storeConfig.stores[storeId as keyof typeof storeConfig.stores] || storeConfig.stores['demo']
@@ -84,11 +150,15 @@ ${storeData.faq.map((item, index) => `
       const firstChoice = completion.choices[0];
       console.log('OpenAI completion choice:', JSON.stringify(firstChoice, null, 2));
 
-      const responseContent = firstChoice?.message?.content;
+      const responseContent = firstChoice?.message?.content || '';
+
+      // 会話履歴をFirestoreに保存
+      await saveConversation(message, responseContent, storeId, sessionId, request);
 
       return NextResponse.json({
-        response: responseContent || '', // nullの場合も空文字を返す
-        storeId: storeId
+        response: responseContent,
+        storeId: storeId,
+        sessionId: sessionId
       })
     } else {
       console.log('Using fallback response (no OpenAI API key)')
@@ -123,9 +193,13 @@ ${storeData.faq.map((item, index) => `
         }
       }
 
+      // 会話履歴をFirestoreに保存
+      await saveConversation(message, response, storeId, sessionId, request);
+
       return NextResponse.json({
         response: response,
-        storeId: storeId
+        storeId: storeId,
+        sessionId: sessionId
       })
     }
   } catch (error) {

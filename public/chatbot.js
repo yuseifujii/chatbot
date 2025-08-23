@@ -19,6 +19,14 @@
   const apiEndpoint = 'https://chatbot.toremock.com/api/chat';
   const configEndpoint = 'https://chatbot.toremock.com/api/store-config';
   
+  // セッション管理
+  let sessionId = localStorage.getItem(`chatbot_session_${storeId}`) || generateSessionId();
+  localStorage.setItem(`chatbot_session_${storeId}`, sessionId);
+  
+  function generateSessionId() {
+    return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+  }
+  
   // デフォルト設定
   let storeConfig = {
     name: 'AIアシスタント',
@@ -428,7 +436,8 @@
           },
           body: JSON.stringify({
             message: message,
-            storeId: storeId
+            storeId: storeId,
+            sessionId: sessionId
           })
         });
 

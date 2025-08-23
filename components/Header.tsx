@@ -10,7 +10,6 @@ const navItems = [
   { label: 'ホーム', href: '#hero' },
   { label: 'サービス', href: '#services' },
   { label: '料金', href: '#pricing' },
-  { label: 'お問い合わせ', href: '#contact' },
 ]
 
 export default function Header() {
@@ -76,7 +75,12 @@ export default function Header() {
           </nav>
 
           {/* CTAボタン */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
+            <Link href="/dashboard" passHref>
+              <button className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                ダッシュボード
+              </button>
+            </Link>
             <Link href="/form" passHref>
               <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
                 お申し込み
@@ -107,6 +111,11 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
+              <Link href="/dashboard" passHref>
+                <div className="px-3 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
+                  ダッシュボード
+                </div>
+              </Link>
               <Link href="/form" passHref>
                 <button className="mx-3 mt-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
                   お申し込み

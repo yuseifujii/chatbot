@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 会話履歴コレクション
+    match /conversations/{conversationId} {
+      // 読み取り: 誰でも可能（アプリケーション層で店舗IDによる制御）
+      allow read: if true;
+      // 書き込み: サーバーサイドからのみ（セキュリティ向上）
+      allow write: if false;
+    }
+    
+    // セッション情報コレクション
+    match /sessions/{sessionId} {
+      // 読み取り: 誰でも可能（アプリケーション層で店舗IDによる制御）
+      allow read: if true;
+      // 書き込み: サーバーサイドからのみ
+      allow write: if false;
+    }
+    
+    // その他のコレクションはデフォルトで拒否
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
