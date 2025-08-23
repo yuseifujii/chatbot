@@ -128,6 +128,19 @@ function DashboardContent() {
     }
   }
 
+  // 会話履歴が更新された時に一番下にスクロール
+  useEffect(() => {
+    if (conversations.length > 0) {
+      const container = document.getElementById('conversation-container')
+      if (container) {
+        // 短い遅延を入れて、DOM更新を待つ
+        setTimeout(() => {
+          container.scrollTop = container.scrollHeight
+        }, 100)
+      }
+    }
+  }, [conversations])
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleString('ja-JP', {
@@ -376,8 +389,8 @@ function DashboardContent() {
                 </div>
               )}
 
-              <div className="space-y-4 max-h-96 overflow-y-auto">
-                {conversations.map((conversation) => (
+              <div className="space-y-4 max-h-96 overflow-y-auto" id="conversation-container">
+                {[...conversations].reverse().map((conversation) => (
                   <div key={conversation.id} className="space-y-2">
                     <div className="text-xs text-gray-500">
                       {formatDate(conversation.timestamp)}
