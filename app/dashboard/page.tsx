@@ -71,7 +71,6 @@ function DashboardContent() {
   const [stats, setStats] = useState({
     totalSessions: 0,
     totalMessages: 0,
-    avgMessagesPerSession: 0,
   })
 
   const searchParams = useSearchParams()
@@ -223,12 +222,10 @@ function DashboardContent() {
         const totalMessages = sessionsData.sessions.reduce((sum: number, session: ChatSession) => 
           sum + session.actualMessageCount, 0
         )
-        const avgMessagesPerSession = totalSessions > 0 ? totalMessages / totalSessions : 0
 
         setStats({
           totalSessions,
           totalMessages,
-          avgMessagesPerSession: Math.round(avgMessagesPerSession * 10) / 10,
         })
 
         // チャートデータを生成
@@ -378,7 +375,7 @@ function DashboardContent() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* 統計情報 */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="p-4 sm:p-5">
               <div className="flex items-center">
@@ -416,28 +413,6 @@ function DashboardContent() {
                     </dt>
                     <dd className="text-base sm:text-lg font-medium text-gray-900">
                       {stats.totalMessages}
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white overflow-hidden shadow rounded-lg">
-            <div className="p-4 sm:p-5">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-md flex items-center justify-center">
-                    <span className="text-white text-xs sm:text-sm font-medium">A</span>
-                  </div>
-                </div>
-                <div className="ml-3 sm:ml-5 w-0 flex-1">
-                  <dl>
-                    <dt className="text-xs sm:text-sm font-medium text-gray-500 truncate">
-                      平均メッセージ数
-                    </dt>
-                    <dd className="text-base sm:text-lg font-medium text-gray-900">
-                      {stats.avgMessagesPerSession}
                     </dd>
                   </dl>
                 </div>
@@ -544,7 +519,7 @@ function DashboardContent() {
                           borderColor: '#4f46e5',
                           backgroundColor: 'rgba(79, 70, 229, 0.1)',
                           borderWidth: 2,
-                          tension: 0.4,
+                          tension: 0,
                         },
                         {
                           label: 'メッセージ数',
@@ -552,7 +527,7 @@ function DashboardContent() {
                           borderColor: '#10b981',
                           backgroundColor: 'rgba(16, 185, 129, 0.1)',
                           borderWidth: 2,
-                          tension: 0.4,
+                          tension: 0,
                         },
                       ],
                     }}
