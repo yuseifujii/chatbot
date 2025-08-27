@@ -94,9 +94,9 @@ export default function PricingSection() {
                 <div className="flex items-baseline">
                   {plan.isCampaign ? (
                     <div className="flex flex-col">
-                      <div className="flex items-baseline mb-1">
-                        <span className="text-lg md:text-xl line-through opacity-60">{plan.price}</span>
-                        <span className="ml-1 text-sm opacity-60 line-through">{plan.unit}</span>
+                      <div className="flex items-baseline mb-2">
+                        <span className="text-2xl md:text-3xl line-through opacity-60">{plan.price}</span>
+                        <span className="ml-2 text-lg md:text-xl opacity-60 line-through">{plan.unit}</span>
                       </div>
                       <div className="flex items-baseline">
                         <span className="text-4xl md:text-5xl font-bold text-yellow-300">{plan.campaignPrice}</span>
@@ -114,9 +114,8 @@ export default function PricingSection() {
                   <p className="text-xs md:text-sm mt-2 opacity-90">※ 一度だけのお支払い</p>
                 )}
                 {plan.isCampaign && (
-                  <div className="mt-3 bg-red-500 bg-opacity-20 rounded-lg p-2">
-                    <p className="text-xs md:text-sm font-bold text-yellow-300">🎉 今だけキャンペーン中！</p>
-                    <p className="text-xs opacity-90">開発費が無料になります</p>
+                  <div className="mt-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-3">
+                    <p className="text-sm md:text-base font-bold text-white text-center">今だけ無料キャンペーン中！</p>
                   </div>
                 )}
                 {plan.isOptional && (
@@ -171,7 +170,7 @@ export default function PricingSection() {
                   </div>
                 </div>
                 <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-3">
-                  <p className="text-sm font-bold text-yellow-300">🎉 キャンペーン適用で¥29,000お得！</p>
+                  <p className="text-sm font-bold text-yellow-300">キャンペーン適用で¥29,000お得！</p>
                 </div>
               </div>
             </div>
