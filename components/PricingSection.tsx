@@ -94,13 +94,15 @@ export default function PricingSection() {
                 <div className="flex items-baseline">
                   {plan.isCampaign ? (
                     <div className="flex flex-col">
-                      <div className="flex items-baseline mb-2">
-                        <span className="text-2xl md:text-3xl line-through opacity-60">{plan.price}</span>
-                        <span className="ml-2 text-lg md:text-xl opacity-60">{plan.unit}</span>
-                      </div>
-                      <div className="flex items-baseline mb-3">
-                        <span className="text-4xl md:text-5xl font-bold text-yellow-300">{plan.campaignPrice}</span>
-                        <span className="ml-2 text-xl md:text-2xl font-bold text-yellow-300">{plan.unit}</span>
+                      <div className="flex items-baseline gap-4 mb-3">
+                        <div className="flex items-baseline">
+                          <span className="text-2xl md:text-3xl line-through opacity-60">{plan.price}</span>
+                          <span className="ml-1 text-lg md:text-xl opacity-60">{plan.unit}</span>
+                        </div>
+                        <div className="flex items-baseline">
+                          <span className="text-4xl md:text-5xl font-bold text-yellow-300">{plan.campaignPrice}</span>
+                          <span className="ml-2 text-xl md:text-2xl font-bold text-yellow-300">{plan.unit}</span>
+                        </div>
                       </div>
                       <div className="bg-yellow-500 bg-opacity-20 rounded-lg p-2">
                         <p className="text-xs md:text-sm font-bold text-yellow-300 text-center">今だけ無料キャンペーン中！</p>
@@ -113,9 +115,7 @@ export default function PricingSection() {
                     </>
                   )}
                 </div>
-                {plan.isOneTime && (
-                  <p className="text-xs md:text-sm mt-2 opacity-90">※ 一度だけのお支払い</p>
-                )}
+
 
                 {plan.isOptional && (
                   <p className="text-xs md:text-sm mt-2 opacity-90">※ 必要に応じて選択</p>
