@@ -13,6 +13,7 @@ const pricingPlans = [
     title: "導入初期費用",
     price: "29,000",
     unit: "円",
+    campaignPrice: "0",
     description: "カスタムChatBOT開発費用",
     features: [
       "カスタムAIチャットボット開発",
@@ -21,6 +22,7 @@ const pricingPlans = [
       "最短2日で開発完了"
     ],
     isOneTime: true,
+    isCampaign: true,
     color: "from-blue-600 to-blue-700"
   },
   {
@@ -90,11 +92,32 @@ export default function PricingSection() {
                 <h3 className="text-lg md:text-xl font-bold mb-1.5 md:mb-2">{plan.title}</h3>
                 <p className="text-xs md:text-sm opacity-90 mb-3 md:mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
-                  <span className="text-3xl md:text-4xl font-bold">{plan.price}</span>
-                  <span className="ml-2 text-base md:text-lg opacity-90">{plan.unit}</span>
+                  {plan.isCampaign ? (
+                    <div className="flex flex-col">
+                      <div className="flex items-baseline mb-1">
+                        <span className="text-lg md:text-xl line-through opacity-60">{plan.price}</span>
+                        <span className="ml-1 text-sm opacity-60 line-through">{plan.unit}</span>
+                      </div>
+                      <div className="flex items-baseline">
+                        <span className="text-4xl md:text-5xl font-bold text-yellow-300">{plan.campaignPrice}</span>
+                        <span className="ml-2 text-xl md:text-2xl font-bold text-yellow-300">{plan.unit}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <span className="text-3xl md:text-4xl font-bold">{plan.price}</span>
+                      <span className="ml-2 text-base md:text-lg opacity-90">{plan.unit}</span>
+                    </>
+                  )}
                 </div>
                 {plan.isOneTime && (
                   <p className="text-xs md:text-sm mt-2 opacity-90">※ 一度だけのお支払い</p>
+                )}
+                {plan.isCampaign && (
+                  <div className="mt-3 bg-red-500 bg-opacity-20 rounded-lg p-2">
+                    <p className="text-xs md:text-sm font-bold text-yellow-300">🎉 今だけキャンペーン中！</p>
+                    <p className="text-xs opacity-90">開発費が無料になります</p>
+                  </div>
                 )}
                 {plan.isOptional && (
                   <p className="text-xs md:text-sm mt-2 opacity-90">※ 必要に応じて選択</p>
@@ -123,9 +146,12 @@ export default function PricingSection() {
                 初年度のお支払い例
               </h3>
               <div className="space-y-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span>導入初期費用</span>
-                  <span>¥29,000</span>
+                  <div className="flex items-center">
+                    <span className="line-through opacity-60 mr-2">¥29,000</span>
+                    <span className="font-bold text-yellow-300 text-lg">¥0</span>
+                  </div>
                 </div>
                 <div className="flex justify-between">
                   <span>サービス維持費</span>
@@ -138,8 +164,14 @@ export default function PricingSection() {
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between font-bold text-base md:text-lg">
                     <span>合計</span>
-                    <span>¥48,000</span>
+                    <div className="flex items-center">
+                      <span className="line-through opacity-60 mr-2">¥48,000</span>
+                      <span className="text-yellow-300 text-xl">¥19,000</span>
+                    </div>
                   </div>
+                </div>
+                <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-3">
+                  <p className="text-sm font-bold text-yellow-300">🎉 キャンペーン適用で¥29,000お得！</p>
                 </div>
               </div>
             </div>
