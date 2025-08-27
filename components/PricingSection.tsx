@@ -104,8 +104,8 @@ export default function PricingSection() {
                           <span className="ml-2 text-xl md:text-2xl font-bold text-yellow-300">{plan.unit}</span>
                         </div>
                       </div>
-                      <div className="bg-yellow-500 bg-opacity-20 rounded-lg p-2">
-                        <p className="text-xs md:text-sm font-bold text-yellow-300 text-center">今だけ無料キャンペーン中！</p>
+                      <div className="bg-yellow-500 bg-opacity-20 rounded-lg p-3">
+                        <p className="text-sm md:text-base font-bold text-yellow-300 text-center">今だけ無料キャンペーン中！</p>
                       </div>
                     </div>
                   ) : (
@@ -168,8 +168,8 @@ export default function PricingSection() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-3">
-                  <p className="text-sm font-bold text-yellow-300">キャンペーン適用で¥29,000お得！</p>
+                <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-4">
+                  <p className="text-base md:text-lg font-bold text-yellow-300">キャンペーン適用で¥29,000お得！</p>
                 </div>
               </div>
             </div>
