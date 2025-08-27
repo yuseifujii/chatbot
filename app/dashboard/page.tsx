@@ -313,7 +313,7 @@ function DashboardContent() {
                   value={storeId}
                   onChange={(e) => setStoreId(e.target.value)}
                   className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
-                  placeholder="例: demo"
+                  placeholder="例: abcd123"
                 />
               </div>
               <div>
@@ -328,7 +328,7 @@ function DashboardContent() {
                   value={storeName}
                   onChange={(e) => setStoreName(e.target.value)}
                   className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
-                  placeholder="例: トレモックのチャットボット"
+                  placeholder="例: ●×株式会社"
                 />
               </div>
             </div>
