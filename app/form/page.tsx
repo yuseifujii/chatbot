@@ -62,7 +62,7 @@ export default function FormPage() {
             <Script src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" async />
             <div className="flex justify-center mb-4">
               <stripe-buy-button
-                  buy-button-id="buy_btn_1RyBSrRocVI9NL8DlTBOzOSY"
+                  buy-button-id="buy_btn_1SLVenRocVI9NL8DMS9ZrWRy"
                   publishable-key="pk_live_51R0zVYRocVI9NL8Dbta57vcirBPCRQgmFQoEYcUzB5FmpvbGpGZAsjRfK9gJQer9huuimOyzouuOIoSRv6HI67bS00G0ZMs2QK"
                 ></stripe-buy-button>
             </div>
