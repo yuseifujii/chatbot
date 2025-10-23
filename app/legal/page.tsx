@@ -2,8 +2,10 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { getFormattedPrices } from '@/lib/pricing-config';
 
 export default function LegalPage() {
+  const prices = getFormattedPrices();
   return (
     <>
       <Header />
@@ -64,9 +66,9 @@ export default function LegalPage() {
             <section className="bg-white border border-gray-200 rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">販売価格</h2>
               <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>導入初期費用：</strong>29,000円（税込）</p>
-                <p><strong>サービス維持費：</strong>19,000円（税込・年額）</p>
-                <p><strong>導入サポート・追加変更：</strong>無料</p>
+                <p><strong>導入初期費用：</strong>{prices.initialFee.taxIncluded}</p>
+                <p><strong>サービス維持費：</strong>{prices.maintenanceFee.taxIncluded}</p>
+                <p><strong>導入サポート・追加変更：</strong>{prices.supportFee.amount}</p>
                 <p className="text-sm text-gray-600 mt-4">
                   ※ 価格は予告なく変更される場合がございます。<br />
                   ※ 最新の価格はお申し込み時にご確認ください。

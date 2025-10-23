@@ -1,6 +1,7 @@
 "use client"
 import { Check, Star, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import { pricingConfig, calculateFirstYearTotal } from '@/lib/pricing-config'
 
 declare global {
   interface Window {
@@ -10,11 +11,11 @@ declare global {
 
 const pricingPlans = [
   {
-    title: "導入初期費用",
-    price: "22,000",
-    unit: "円",
-    campaignPrice: "0",
-    description: "カスタムChatBOT開発費用",
+    title: pricingConfig.initialFee.label,
+    price: pricingConfig.initialFee.amount.toLocaleString(),
+    unit: pricingConfig.initialFee.unit,
+    campaignPrice: pricingConfig.initialFee.campaignAmount.toLocaleString(),
+    description: pricingConfig.initialFee.description,
     features: [
       "カスタムAIチャットボット開発",
       "貴社専用のデータ学習・設定",
@@ -22,14 +23,14 @@ const pricingPlans = [
       "最短2日で開発完了"
     ],
     isOneTime: true,
-    isCampaign: true,
+    isCampaign: pricingConfig.initialFee.isCampaign,
     color: "from-blue-600 to-blue-700"
   },
   {
-    title: "サービス維持費",
-    price: "11,000",
-    unit: "円/年",
-    description: "年額利用料",
+    title: pricingConfig.maintenanceFee.label,
+    price: pricingConfig.maintenanceFee.amount.toLocaleString(),
+    unit: pricingConfig.maintenanceFee.unit,
+    description: pricingConfig.maintenanceFee.description,
     features: [
       "24時間365日稼働",
       "定期的なAI性能アップデート",
@@ -40,10 +41,10 @@ const pricingPlans = [
     color: "from-blue-600 to-blue-700"
   },
   {
-    title: "導入サポート/追加変更",
-    price: "無料",
+    title: pricingConfig.supportFee.label,
+    price: pricingConfig.supportFee.amount,
     unit: "",
-    description: "オプションサービス",
+    description: pricingConfig.supportFee.description,
     features: [
       "1行のコードで導入可能",
       "導入サポート",
@@ -145,32 +146,48 @@ export default function PricingSection() {
               </h3>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span>導入初期費用</span>
+                  <span>{pricingConfig.initialFee.label}</span>
                   <div className="flex items-center">
-                    <span className="line-through opacity-60 mr-2">¥22,000</span>
-                    <span className="font-bold text-yellow-300 text-lg">¥0</span>
+                    {pricingConfig.initialFee.isCampaign && (
+                      <>
+                        <span className="line-through opacity-60 mr-2">¥{pricingConfig.initialFee.amount.toLocaleString()}</span>
+                        <span className="font-bold text-yellow-300 text-lg">¥{pricingConfig.initialFee.campaignAmount.toLocaleString()}</span>
+                      </>
+                    )}
+                    {!pricingConfig.initialFee.isCampaign && (
+                      <span>¥{pricingConfig.initialFee.amount.toLocaleString()}</span>
+                    )}
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <span>サービス維持費</span>
-                  <span>¥11,000</span>
+                  <span>{pricingConfig.maintenanceFee.label}</span>
+                  <span>¥{pricingConfig.maintenanceFee.amount.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>導入サポート/追加変更</span>
-                  <span>無料</span>
+                  <span>{pricingConfig.supportFee.label}</span>
+                  <span>{pricingConfig.supportFee.amount}</span>
                 </div>
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between font-bold text-base md:text-lg">
                     <span>合計</span>
                     <div className="flex items-center">
-                      <span className="line-through opacity-60 mr-2">¥33,000</span>
-                      <span className="text-yellow-300 text-xl">¥22,000</span>
+                      {pricingConfig.initialFee.isCampaign && (
+                        <>
+                          <span className="line-through opacity-60 mr-2">¥{calculateFirstYearTotal().originalTotal.toLocaleString()}</span>
+                          <span className="text-yellow-300 text-xl">¥{calculateFirstYearTotal().total.toLocaleString()}</span>
+                        </>
+                      )}
+                      {!pricingConfig.initialFee.isCampaign && (
+                        <span className="text-yellow-300 text-xl">¥{calculateFirstYearTotal().total.toLocaleString()}</span>
+                      )}
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-4">
-                  <p className="text-base md:text-lg font-bold text-yellow-300">キャンペーン適用で¥22,000お得！</p>
-                </div>
+                {pricingConfig.initialFee.isCampaign && (
+                  <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-4">
+                    <p className="text-base md:text-lg font-bold text-yellow-300">キャンペーン適用で¥{calculateFirstYearTotal().savings.toLocaleString()}お得！</p>
+                  </div>
+                )}
               </div>
             </div>
             <div>
@@ -178,7 +195,7 @@ export default function PricingSection() {
                 2年目以降
               </h3>
               <p className="text-2xl md:text-3xl font-bold mb-2">
-                年額 ¥11,000 のみ
+                年額 ¥{pricingConfig.maintenanceFee.amount.toLocaleString()} のみ
               </p>
               <p className="text-sm opacity-90">
                 ※ 追加費用は一切かかりません

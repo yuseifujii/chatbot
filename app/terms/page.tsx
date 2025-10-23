@@ -2,8 +2,10 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { getFormattedPrices } from '@/lib/pricing-config';
 
 export default function TermsPage() {
+  const prices = getFormattedPrices();
   return (
     <>
       <Header />
@@ -60,9 +62,9 @@ export default function TermsPage() {
             <ol className="list-decimal list-inside text-gray-700 space-y-2">
               <li>本サービスの料金は、以下の通りです：
                 <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                  <li>導入初期費用：29,000円（税込）</li>
-                  <li>サービス維持費：19,000円（税込・年額）</li>
-                  <li>導入サポート・追加変更：無料</li>
+                  <li>導入初期費用：{prices.initialFee.taxIncluded}</li>
+                  <li>サービス維持費：{prices.maintenanceFee.taxIncluded}</li>
+                  <li>導入サポート・追加変更：{prices.supportFee.amount}</li>
                 </ul>
               </li>
               <li>料金の支払いは、当社が指定する決済サービス（Stripe）を通じて行うものとします。</li>
