@@ -11,7 +11,7 @@ declare global {
 const pricingPlans = [
   {
     title: "導入初期費用",
-    price: "29,000",
+    price: "22,000",
     unit: "円",
     campaignPrice: "0",
     description: "カスタムChatBOT開発費用",
@@ -27,7 +27,7 @@ const pricingPlans = [
   },
   {
     title: "サービス維持費",
-    price: "19,000",
+    price: "11,000",
     unit: "円/年",
     description: "年額利用料",
     features: [
@@ -147,13 +147,13 @@ export default function PricingSection() {
                 <div className="flex justify-between items-center">
                   <span>導入初期費用</span>
                   <div className="flex items-center">
-                    <span className="line-through opacity-60 mr-2">¥29,000</span>
+                    <span className="line-through opacity-60 mr-2">¥22,000</span>
                     <span className="font-bold text-yellow-300 text-lg">¥0</span>
                   </div>
                 </div>
                 <div className="flex justify-between">
                   <span>サービス維持費</span>
-                  <span>¥19,000</span>
+                  <span>¥11,000</span>
                 </div>
                 <div className="flex justify-between">
                   <span>導入サポート/追加変更</span>
@@ -163,13 +163,13 @@ export default function PricingSection() {
                   <div className="flex justify-between font-bold text-base md:text-lg">
                     <span>合計</span>
                     <div className="flex items-center">
-                      <span className="line-through opacity-60 mr-2">¥48,000</span>
-                      <span className="text-yellow-300 text-xl">¥19,000</span>
+                      <span className="line-through opacity-60 mr-2">¥33,000</span>
+                      <span className="text-yellow-300 text-xl">¥22,000</span>
                     </div>
                   </div>
                 </div>
                 <div className="mt-3 bg-yellow-500 bg-opacity-20 rounded-lg p-4">
-                  <p className="text-base md:text-lg font-bold text-yellow-300">キャンペーン適用で¥29,000お得！</p>
+                  <p className="text-base md:text-lg font-bold text-yellow-300">キャンペーン適用で¥22,000お得！</p>
                 </div>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function PricingSection() {
                 2年目以降
               </h3>
               <p className="text-2xl md:text-3xl font-bold mb-2">
-                年額 ¥19,000 のみ
+                年額 ¥11,000 のみ
               </p>
               <p className="text-sm opacity-90">
                 ※ 追加費用は一切かかりません
