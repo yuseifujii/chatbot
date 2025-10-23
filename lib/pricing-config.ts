@@ -11,7 +11,7 @@ export const pricingConfig = {
     campaignAmount: 0,
     isCampaign: true,
     label: "導入初期費用",
-    description: "カスタムChatBOT開発費用"
+    description: "カスタムChatBot開発費用"
   },
   
   // サービス維持費
