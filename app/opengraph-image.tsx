@@ -72,7 +72,7 @@ export default async function Image() {
             }}
           >
             <span>✓ 24時間自動対応</span>
-            <span>✓ 初期費用47,000円〜</span>
+            <span>✓ 初期費用0円</span>
             <span>✓ 簡単導入</span>
           </div>
         </div>

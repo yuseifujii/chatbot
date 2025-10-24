@@ -79,9 +79,10 @@ export default function RootLayout({
     "description": "貴社専用のAIチャットボットを最短2営業日で開発・導入。24時間自動対応で顧客満足度向上とコスト削減を実現。",
     "offers": {
       "@type": "Offer",
-      "price": "47000",
+      "price": "11000",
       "priceCurrency": "JPY",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "description": "初期費用0円、年間利用料11,000円から"
     },
     "provider": {
       "@type": "Organization",
@@ -108,9 +109,6 @@ export default function RootLayout({
     <html lang="ja" className="scroll-smooth">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <meta name="theme-color" content="#4f46e5" />
         <script
           type="application/ld+json"
