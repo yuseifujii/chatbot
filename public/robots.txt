@@ -1,0 +1,23 @@
+# robots.txt for https://chatbot.toremock.com
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /purchase/success
+Disallow: /purchase/cancel
+
+# Sitemap
+Sitemap: https://chatbot.toremock.com/sitemap.xml
+
+# Crawl-delay
+User-agent: *
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 0
